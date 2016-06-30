@@ -1,22 +1,22 @@
 //
-//  text.m
+//  Text.m
 //  FastModel
 //
 //  Created by Volitation小星 on 16/6/24.
 //  Copyright © 2016年 wangkun. All rights reserved.
 //
 
-#import "text.h"
-#import "programmers.h"
+#import "Text.h"
+#import "Programmers.h"
 
 
-@interface text ()
+@interface Text ()
 
 
 
 @end
 
-@implementation text
+@implementation Text
 
 
 
@@ -30,15 +30,15 @@
         [self setValuesForKeysWithDictionary:dict];
 
         
-		NSMutableArray* mArrprogrammers = [NSMutableArray arrayWithCapacity:10];
+		NSMutableArray* mArrProgrammers = [NSMutableArray arrayWithCapacity:10];
 
 		for (NSDictionary* dict in self.programmers) {
 
-			programmers* p = [programmers programmersWithDict:dict];
+			Programmers* p = [Programmers programmersWithDict:dict];
 
-			[mArrprogrammers addObject:p];
+			[mArrProgrammers addObject:p];
 
-			self.programmers = mArrprogrammers.copy;
+			self.programmers = mArrProgrammers.copy;
 
 		}
     }
@@ -72,7 +72,7 @@
 	NSArray* d = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
 	NSMutableArray* mArr = [NSMutableArray arrayWithCapacity:20];
 	for (NSDictionary* dict in d) {
-		text* t = [text textWithDict:dict];
+		Text* t = [Text textWithDict:dict];
 		[mArr addObject:t];
 	}
 	return mArr.copy;

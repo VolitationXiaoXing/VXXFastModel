@@ -1,5 +1,5 @@
 //
-//  text.h
+//  Text.h
 //  FastModel
 //
 //  Created by Volitation小星 on 16/6/24.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface text : NSObject
+@interface Text : NSObject
 
 
 - (instancetype)initWithDict:(NSDictionary *)dict;

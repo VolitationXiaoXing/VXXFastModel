@@ -1,5 +1,5 @@
 //
-//  programmers.h
+//  Programmers.h
 //  FastModel
 //
 //  Created by Volitation小星 on 16/6/24.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface programmers : NSObject
+@interface Programmers : NSObject
 
 
 - (instancetype)initWithDict:(NSDictionary *)dict;

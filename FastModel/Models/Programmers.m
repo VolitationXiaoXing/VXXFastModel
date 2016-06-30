@@ -1,21 +1,21 @@
 //
-//  programmers.m
+//  Programmers.m
 //  FastModel
 //
 //  Created by Volitation小星 on 16/6/24.
 //  Copyright © 2016年 wangkun. All rights reserved.
 //
 
-#import "programmers.h"
+#import "Programmers.h"
 
 
-@interface programmers ()
+@interface Programmers ()
 
 
 
 @end
 
-@implementation programmers
+@implementation Programmers
 
 
 

@@ -1,0 +1,52 @@
+//
+//  $className/$.m
+//  FastModel
+//
+//  Created by Volitation小星 on 16/6/24.
+//  Copyright © 2016年 wangkun. All rights reserved.
+//
+
+#import "$className/$.h"
+%import%
+
+@interface $className/$ ()
+
+
+
+@end
+
+@implementation $className/$
+
+%beginImplementation%
+
+
+
+
+- (instancetype)initWithDict:(NSDictionary *)dict {
+
+    if (self = [super init]) {
+
+        [self setValuesForKeysWithDictionary:dict];
+
+        %initWithDict%
+    }
+
+    return self;
+}
+
+-(void)setValue:(id)value forUndefinedKey:(NSString *)key{
+
+    %forUndefinedKey%
+
+}
+
+
++ (instancetype)$classNameM/$WithDict:(NSDictionary *)dict {
+
+    return [[self alloc] initWithDict:dict];
+
+}
+
+%endImplementation%
+
+@end

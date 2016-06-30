@@ -1,17 +1,27 @@
 //
 //  ViewController.m
-//  FastModelTest
+//  FastModel
 //
-//  Created by Volitation小星 on 16/6/28.
+//  Created by Volitation小星 on 16/6/24.
 //  Copyright © 2016年 wangkun. All rights reserved.
 //
 
 #import "ViewController.h"
-#import "News.h"
+#import "VXXAnalysis.h"
+
+
 
 @interface ViewController ()
 
+@property (weak) IBOutlet NSTextField *urlTextField;
+@property (weak) IBOutlet NSTextField *classNameTextField;
+
+
+//网络获取的URL
 @property (copy,nonatomic) NSString* url;
+
+//生成类名
+@property (copy,nonatomic) NSString* className;
 
 @end
 
@@ -20,23 +30,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.url = @"http://news.coolban.com/Api/Index/news_list/app/2/cat/7/limit/20/time/1445327313/type/0?channel=appstore&uuid=64543C0F-89E1-4D63-B947-DB4C504D13B1&net=5&model=iPhone&ver=1.0.5";
     
-    [self loadDataFromNetWorkOnSuccess:^(NSData * data){
-        
-        NSArray* arr  = [News newsWithData:data];
-        
-        NSLog(@"%@",arr);
+}
 
+- (void)setRepresentedObject:(id)representedObject {
+    [super setRepresentedObject:representedObject];
+    
+    
+}
+
+#pragma mark- URL模块
+
+- (IBAction)onAnalysisBtnCliceked:(NSButton *)sender {
+    
+    self.url = self.urlTextField.stringValue;
+    
+    NSLog(@"url = %@",self.url);
+    
+    self.className = self.classNameTextField.stringValue;
+    
+    [self loadDataFromNetWorkOnSuccess:^(NSData * data) {
         
-    } OrFail:^(NSString * e){
-        NSLog(@"失败了");
+        VXXAnalysis* a = [VXXAnalysis shareAnalysis];
+        
+        [a analysisWithData:data andClassName:self.className];
+        
+        
+    } OrFail:^(NSString * result) {
+        
+        NSLog(@"%@",result);
+        
     }];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
 
 
 #pragma mark- 从网络获取数据
@@ -47,7 +73,7 @@
     
     NSURL* url = [NSURL URLWithString:self.url];
     
-    //    NSURLRequest* request = [NSURLRequest requestWithURL:url];
+//    NSURLRequest* request = [NSURLRequest requestWithURL:url];
     
     NSMutableURLRequest* mRequest = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestReloadIgnoringLocalCacheData timeoutInterval:15];
     
@@ -76,9 +102,7 @@
             NSLog(@"成功准备解析数据");
             if(success){
                 
-                
                 success(data);
-                
                 
             }else{
                 
@@ -102,9 +126,13 @@
         
     }];
     
-}
+    
+    
 
     
+    
+}
+
 
 
 @end
