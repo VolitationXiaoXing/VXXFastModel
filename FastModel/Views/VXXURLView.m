@@ -11,8 +11,6 @@
 @interface VXXURLView ()
 
 
-
-
 @end
 
 @implementation VXXURLView

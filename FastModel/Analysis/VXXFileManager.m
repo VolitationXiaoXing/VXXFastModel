@@ -82,7 +82,7 @@ static VXXFileManager* instance;
     
     target = [target stringByAppendingPathComponent:dirName];
     
-    NSLog(@"resPath = %@",target);
+    NSLog(@"targetPath = %@",target);
     
     //先判断文件是否存在
     NSFileManager* fileManager = [NSFileManager defaultManager];
@@ -92,8 +92,10 @@ static VXXFileManager* instance;
     
     [fileManager createDirectoryAtPath:target withIntermediateDirectories:YES attributes:nil error:nil];
     
-    NSString* path = [resPath stringByAppendingPathComponent:headerFile];
+//    NSString* path = [resPath stringByAppendingPathComponent:headerFile];
     
+    //h文件
+    NSString* path = [[NSBundle mainBundle] pathForResource:@"Model.hres" ofType:nil];
     
     NSData* data = [NSData dataWithContentsOfFile:path];
     
@@ -109,7 +111,9 @@ static VXXFileManager* instance;
     
     //m文件
     
-    NSString* path1 = [resPath stringByAppendingPathComponent:contentFile];
+//    NSString* path1 = [resPath stringByAppendingPathComponent:contentFile];
+    
+      NSString* path1 = [[NSBundle mainBundle] pathForResource:@"Model.mres" ofType:nil];
     
     NSData* contentData = [NSData dataWithContentsOfFile:path1];
     
@@ -298,10 +302,19 @@ static VXXFileManager* instance;
            
             NSDictionary* dict = obj;
             
+            if (dict) {
+                
+                 NSLog(@"307dict = %@",dict);
+            }else{
+                
+                 NSLog(@"310dict = %@",dict);
+            }
+            
+            NSLog(@"dict = %@",dict);
+            
             if (dict.count > 1) {
                 //需要生成摸型
                 [self beginWrite2FileWithClassName:key anddata:obj];
-                
                 
             }
             

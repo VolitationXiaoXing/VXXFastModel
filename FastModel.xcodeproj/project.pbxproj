@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		EA6650B91D24EFC100FDAAC1 /* VXXChangClassName.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6650B81D24EFC100FDAAC1 /* VXXChangClassName.m */; };
-		EA6650DC1D24FB7900FDAAC1 /* Programmers.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6650D91D24FB7900FDAAC1 /* Programmers.m */; };
-		EA6650DD1D24FB7900FDAAC1 /* Text.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6650DB1D24FB7900FDAAC1 /* Text.m */; };
 		EA87225F1D1CF7B4001DA507 /* VXXFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA87225E1D1CF7B4001DA507 /* VXXFileManager.m */; };
 		EA8722851D1D0CCF001DA507 /* Model.hres in Resources */ = {isa = PBXBuildFile; fileRef = EA8722831D1D0CCF001DA507 /* Model.hres */; };
 		EA8722861D1D0CCF001DA507 /* Model.mres in Resources */ = {isa = PBXBuildFile; fileRef = EA8722841D1D0CCF001DA507 /* Model.mres */; };
@@ -28,10 +26,6 @@
 /* Begin PBXFileReference section */
 		EA6650B71D24EFC100FDAAC1 /* VXXChangClassName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VXXChangClassName.h; sourceTree = "<group>"; };
 		EA6650B81D24EFC100FDAAC1 /* VXXChangClassName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VXXChangClassName.m; sourceTree = "<group>"; };
-		EA6650D81D24FB7900FDAAC1 /* Programmers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Programmers.h; sourceTree = "<group>"; };
-		EA6650D91D24FB7900FDAAC1 /* Programmers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Programmers.m; sourceTree = "<group>"; };
-		EA6650DA1D24FB7900FDAAC1 /* Text.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Text.h; sourceTree = "<group>"; };
-		EA6650DB1D24FB7900FDAAC1 /* Text.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Text.m; sourceTree = "<group>"; };
 		EA87225D1D1CF7B4001DA507 /* VXXFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VXXFileManager.h; sourceTree = "<group>"; };
 		EA87225E1D1CF7B4001DA507 /* VXXFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VXXFileManager.m; sourceTree = "<group>"; };
 		EA8722831D1D0CCF001DA507 /* Model.hres */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Model.hres; sourceTree = "<group>"; };
@@ -120,10 +114,6 @@
 		EAC22F6E1D1CDA8C0059B804 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EA6650D81D24FB7900FDAAC1 /* Programmers.h */,
-				EA6650D91D24FB7900FDAAC1 /* Programmers.m */,
-				EA6650DA1D24FB7900FDAAC1 /* Text.h */,
-				EA6650DB1D24FB7900FDAAC1 /* Text.m */,
 				EA8722871D1D0DD9001DA507 /* VXXtext.h */,
 				EA8722881D1D0DD9001DA507 /* VXXtext.m */,
 				EABD15221D2190140019F73F /* VXXInitMethod.h */,
@@ -240,8 +230,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA8E00C81D1EBA3E00916FE8 /* ViewController.m in Sources */,
-				EA6650DC1D24FB7900FDAAC1 /* Programmers.m in Sources */,
-				EA6650DD1D24FB7900FDAAC1 /* Text.m in Sources */,
 				EA8722891D1D0DD9001DA507 /* VXXtext.m in Sources */,
 				EAC22F7B1D1CE1F00059B804 /* VXXAnalysis.m in Sources */,
 				EABD15241D2190140019F73F /* VXXInitMethod.m in Sources */,

@@ -86,9 +86,10 @@ static VXXAnalysis* instance;
         
         NSLog(@"这个是数组");
         
-        [[[VXXOBJ2String shareOBJ2StringWithCurrentClass:className] classTypeDict] setObject:@"NSArray" forKey:className];
         
-        //需要定义一个构造方法
+         //需要定义一个构造方法
+        //这里添加构造器方法
+        [[[VXXOBJ2String shareOBJ2StringWithCurrentClass:className] classTypeDict] setObject:@"NSArray" forKey:className];
         
         //分析数组
         NSDictionary* arrData = [self analysisArrary:dict];
@@ -96,6 +97,8 @@ static VXXAnalysis* instance;
         VXXFileManager* fileManager = [VXXFileManager shareFileManager];
         
         if([fileManager seachFileWithDirName:className]){
+            
+            NSLog(@"arrData = %@",arrData);
         
         [fileManager beginWrite2FileWithClassName:className anddata:arrData];
         
@@ -115,19 +118,27 @@ static VXXAnalysis* instance;
        
        [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
            
+           //判断新的字典的里面是否有对应的key
            if(!newDict[key]){
                
                if([[obj class] isSubclassOfClass:[NSArray class]]){
                    
                    [newDict setValue:[self analysisArrary:obj] forKey:key];
                    
-               }else{
+               }else if([[obj class] isSubclassOfClass:[NSDictionary class]]){
                    
+                   NSLog(@"有一个字典");
+                   
+                   NSLog(@"key = %@",key);
+                   
+                   [newDict setValue:[self analysisDictionary:obj] forKey:key];
+                   
+               
+               }else{
+               
                    [newDict setValue:[obj class] forKey:key];
                
                }
-               
-               
                
            }
            
@@ -152,10 +163,33 @@ static VXXAnalysis* instance;
             
             [dict setValue:obj forKey:key];
             
+        }else if([[obj class] isSubclassOfClass:[NSDictionary class]]){
+            
+            NSDictionary* dict1 = obj;
+            
+            NSMutableDictionary* mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+            
+            [dict1 enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                
+                if ([[obj class] isSubclassOfClass:[NSDictionary class]]) {
+                    
+                    [mDict setValue:[self analysisDictionary:obj] forKey:key];
+                    
+                }else if([[obj class] isSubclassOfClass:[NSArray class]]){
+                    
+                    [mDict setValue:[self analysisArrary:obj] forKey:key];
+                
+                }else{
+                    
+                    [mDict setValue:[obj class] forKey:key];
+                    
+                }
+                
+            }];
+            
+             [dict setValue:mDict forKey:key];
+            
         }
-        
-        
-        
     }];
     
     return dict;
