@@ -9,6 +9,7 @@
 #import "VXXAnalysis.h"
 #import "VXXFileManager.h"
 #import "VXXOBJ2String.h"
+#import "VXXDictionary.h"
 
 @interface VXXAnalysis ()
 
@@ -71,13 +72,17 @@ static VXXAnalysis* instance;
         
         [[[VXXOBJ2String shareOBJ2StringWithCurrentClass:className] classTypeDict] setObject:@"NSDictionary" forKey:className];
         
-        NSDictionary* arrData = [self analysisDictionary:dict];
+        VXXDictionary* arrData = [self analysisDictionary:dict];
         
         VXXFileManager* fileManager = [VXXFileManager shareFileManager];
         
         if([fileManager seachFileWithDirName:className]){
+            
+        NSLog(@"arrData = %@",arrData);
 
         [fileManager beginWrite2FileWithClassName:className anddata:arrData];
+            
+            
             
         }
         
@@ -86,35 +91,39 @@ static VXXAnalysis* instance;
         
         NSLog(@"这个是数组");
         
-        
          //需要定义一个构造方法
         //这里添加构造器方法
         [[[VXXOBJ2String shareOBJ2StringWithCurrentClass:className] classTypeDict] setObject:@"NSArray" forKey:className];
         
         //分析数组
-        NSDictionary* arrData = [self analysisArrary:dict];
+        VXXDictionary* arrData = [self analysisArrary:dict];
         
         VXXFileManager* fileManager = [VXXFileManager shareFileManager];
         
         if([fileManager seachFileWithDirName:className]){
             
-            NSLog(@"arrData = %@",arrData);
+        NSLog(@"arrData = %@",arrData);
         
         [fileManager beginWrite2FileWithClassName:className anddata:arrData];
-        
+            
         }
         
     }
 }
 
 
--(NSDictionary*)analysisArrary:(NSArray*)array{
+-(VXXDictionary*)analysisArrary:(NSArray*)array{
     //遍历一层把
-    NSDictionary* newDict = [NSMutableDictionary dictionary];
+    VXXDictionary* model = [VXXDictionary new];
+    model.OBJtype = VXXDictionaryTypeArray;
+    
+    model.dict = [NSMutableDictionary dictionaryWithCapacity:10];
+    
+    NSMutableDictionary* newDict = model.dict;
     
    [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
        
-       NSDictionary* dict = obj;
+       NSDictionary * dict = obj;
        
        [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
            
@@ -126,10 +135,6 @@ static VXXAnalysis* instance;
                    [newDict setValue:[self analysisArrary:obj] forKey:key];
                    
                }else if([[obj class] isSubclassOfClass:[NSDictionary class]]){
-                   
-                   NSLog(@"有一个字典");
-                   
-                   NSLog(@"key = %@",key);
                    
                    [newDict setValue:[self analysisDictionary:obj] forKey:key];
                    
@@ -146,12 +151,20 @@ static VXXAnalysis* instance;
        
    }];
     
-    return [self analysisDictionary:newDict];
+    return model;
 }
 
 
--(NSDictionary*)analysisDictionary:(NSDictionary*)dict{
+-(VXXDictionary*)analysisDictionary:(NSMutableDictionary*)dict{
     
+        //遍历一层把
+    VXXDictionary* model = [VXXDictionary new];
+    
+    model.OBJtype = VXXDictionaryTypeArray;
+    
+    model.dict = [NSMutableDictionary dictionaryWithCapacity:10];
+    
+     NSMutableDictionary* newDict = model.dict;
     
     //这里需要判断字典里面还有没有NSArrary,如果有就需要再次调用analysisArrary方法
     
@@ -159,9 +172,9 @@ static VXXAnalysis* instance;
 
         if ([[obj class] isSubclassOfClass:[NSArray class]]) {
             
-            obj = [self analysisArrary:obj];
+            id newObj = [self analysisArrary:obj];
             
-            [dict setValue:obj forKey:key];
+            [newDict setValue:newObj forKey:key];
             
         }else if([[obj class] isSubclassOfClass:[NSDictionary class]]){
             
@@ -187,12 +200,15 @@ static VXXAnalysis* instance;
                 
             }];
             
-             [dict setValue:mDict forKey:key];
+             [newDict setValue:mDict forKey:key];
             
+        }else{
+        
+            [newDict setValue:[obj class] forKey:key];
         }
     }];
     
-    return dict;
+    return model;
 }
 
 

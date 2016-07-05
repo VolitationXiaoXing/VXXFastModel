@@ -150,7 +150,21 @@ static VXXOBJ2String* instance;
 -(NSString*)array2StringWithName:(NSString *)name andClassName:(NSString*)className{
     
     //数组类型需要记录下来,需要生成新的构造方法构造方法
-    [self.modelArr setValue:name forKey:className];
+    if ([self.modelArr objectForKey:className]) {
+        //如果有这个键将
+        NSArray* arr = [self.modelArr objectForKey:className];
+        
+        NSMutableArray* mArr = [NSMutableArray arrayWithArray:arr];
+        
+        [mArr addObject:name];
+        
+         [self.modelArr setValue:mArr forKey:className];
+        
+    }else{
+        [self.modelArr setValue:@[name] forKey:className];
+    }
+    
+   
     
     NSString* s = [NSString stringWithFormat:@"\r\n@property (copy,nonatomic) NSArray* %@;\r\n",name];
     
@@ -163,28 +177,50 @@ static VXXOBJ2String* instance;
     
     initMethod.hasArray = NO;
     
+    
+    NSMutableString* importM = [NSMutableString string];
+    
+    NSMutableString* initMethodM = [NSMutableString string];
+    
     [self.modelArr enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
        
         if([self.currentClass isEqualToString:key]){
             //当前类含有数组,需要添加语句
             initMethod.hasArray = YES;
             
-            NSString* name = obj;
+            NSLog(@"当前类含有数组,需要添加语句");
             
-            NSString* newName = [VXXChangClassName changeNameWithName:name andMode:@"class"];
+            NSAssert([[obj class] isSubclassOfClass:[NSArray class]], @"195 obj类型不是数组类型,obj必须是数组类型.");
             
-            //头文件
+            NSArray* arr = obj;
             
-            NSString* importWordString = [NSString stringWithFormat:@"#import \"%@.h\"\r\n",newName];
-  
-            initMethod.importWords = importWordString;
-            
-            //构造方法
-            NSString* initMethodString = [NSString stringWithFormat:@"\r\n\t\tNSMutableArray* mArr%@ = [NSMutableArray arrayWithCapacity:10];\r\n\r\n\t\tfor (NSDictionary* dict in self.%@) {\r\n\r\n\t\t\t%@* p = [%@ %@WithDict:dict];\r\n\r\n\t\t\t[mArr%@ addObject:p];\r\n\r\n\t\t\tself.%@ = mArr%@.copy;\r\n\r\n\t\t}",newName,name,newName,newName,name,newName,name,newName];
-            
-            initMethod.iniWords = initMethodString;
+            [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                NSString* name = obj;
+                
+                NSString* newName = [VXXChangClassName changeNameWithName:name andMode:@"class"];
+                
+                //头文件
+                
+                NSString* importWordString = [NSString stringWithFormat:@"\n#import \"%@.h\"\r\n",newName];
+                
+                [importM appendString:importWordString];
+                
+                
+                
+                //构造方法
+                NSString* initMethodString = [NSString stringWithFormat:@"\r\n\t\tNSMutableArray* mArr%@ = [NSMutableArray arrayWithCapacity:10];\r\n\r\n\t\tfor (NSDictionary* dict in self.%@) {\r\n\r\n\t\t\t%@* p = [%@ %@WithDict:dict];\r\n\r\n\t\t\t[mArr%@ addObject:p];\r\n\r\n\t\t\tself.%@ = mArr%@.copy;\r\n\r\n\t\t}",newName,name,newName,newName,name,newName,name,newName];
+                
+                [initMethodM appendString:initMethodString];
+
+                
+            }];
             
         }
+        
+        initMethod.importWords = importM.copy;
+        
+        initMethod.iniWords = initMethodM.copy;
         
     }];
     
@@ -219,6 +255,11 @@ static VXXOBJ2String* instance;
     }
     
     return ms;
+}
+
+
++(void)clearAll{
+    instance = nil;
 }
 
 

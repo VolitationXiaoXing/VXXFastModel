@@ -28,4 +28,6 @@
 
 -(NSString*)addInitExtraInMFile;
 
++(void)clearAll;
+
 @end

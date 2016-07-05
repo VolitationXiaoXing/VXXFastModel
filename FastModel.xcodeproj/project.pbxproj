@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EA3B1DAB1D26CEF100B9C7A7 /* VXXDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3B1DAA1D26CEF100B9C7A7 /* VXXDictionary.m */; };
 		EA6650B91D24EFC100FDAAC1 /* VXXChangClassName.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6650B81D24EFC100FDAAC1 /* VXXChangClassName.m */; };
 		EA87225F1D1CF7B4001DA507 /* VXXFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA87225E1D1CF7B4001DA507 /* VXXFileManager.m */; };
 		EA8722851D1D0CCF001DA507 /* Model.hres in Resources */ = {isa = PBXBuildFile; fileRef = EA8722831D1D0CCF001DA507 /* Model.hres */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EA3B1DA91D26CEF100B9C7A7 /* VXXDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VXXDictionary.h; sourceTree = "<group>"; };
+		EA3B1DAA1D26CEF100B9C7A7 /* VXXDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VXXDictionary.m; sourceTree = "<group>"; };
 		EA6650B71D24EFC100FDAAC1 /* VXXChangClassName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VXXChangClassName.h; sourceTree = "<group>"; };
 		EA6650B81D24EFC100FDAAC1 /* VXXChangClassName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VXXChangClassName.m; sourceTree = "<group>"; };
 		EA87225D1D1CF7B4001DA507 /* VXXFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VXXFileManager.h; sourceTree = "<group>"; };
@@ -118,6 +121,8 @@
 				EA8722881D1D0DD9001DA507 /* VXXtext.m */,
 				EABD15221D2190140019F73F /* VXXInitMethod.h */,
 				EABD15231D2190140019F73F /* VXXInitMethod.m */,
+				EA3B1DA91D26CEF100B9C7A7 /* VXXDictionary.h */,
+				EA3B1DAA1D26CEF100B9C7A7 /* VXXDictionary.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,6 +241,7 @@
 				EA6650B91D24EFC100FDAAC1 /* VXXChangClassName.m in Sources */,
 				EAC22F5E1D1CD7F20059B804 /* main.m in Sources */,
 				EA8E00CB1D1EBE9000916FE8 /* VXXOBJ2String.m in Sources */,
+				EA3B1DAB1D26CEF100B9C7A7 /* VXXDictionary.m in Sources */,
 				EAC22F5B1D1CD7F20059B804 /* AppDelegate.m in Sources */,
 				EA87225F1D1CF7B4001DA507 /* VXXFileManager.m in Sources */,
 				EAC22F761D1CDC7D0059B804 /* VXXURLView.m in Sources */,
@@ -345,6 +351,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = FastModel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wangkun.ios.FastModel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -357,6 +364,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = FastModel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.wangkun.ios.FastModel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

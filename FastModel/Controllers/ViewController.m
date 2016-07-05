@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "VXXAnalysis.h"
+#import "VXXOBJ2String.h"
 
 
 
@@ -50,6 +51,8 @@
     self.className = self.classNameTextField.stringValue;
     
     [self loadDataFromNetWorkOnSuccess:^(NSData * data) {
+        
+        [VXXOBJ2String clearAll];
         
         VXXAnalysis* a = [VXXAnalysis shareAnalysis];
         

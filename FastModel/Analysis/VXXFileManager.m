@@ -10,6 +10,7 @@
 #import "VXXOBJ2String.h"
 #import "VXXInitMethod.h"
 #import "VXXChangClassName.h"
+#import "VXXDictionary.h"
 
 #define CLASSNAMEMARK @"$className/$"
 
@@ -136,23 +137,23 @@ static VXXFileManager* instance;
 
 -(void)beginWrite2FileWithClassName:(NSString *)className anddata:(id)set{
     
-    if (className.length == 0) {
+    if (className.length == 0||1) {
         return;
     }
 
-    NSLog(@"136 className = %@",className);
+//    NSLog(@"136 className = %@",className);
     
-    if ([set isKindOfClass:[NSArray class]]) {
-        NSLog(@"开始分析数组");
-        //这里需要比较数组的每一个键值对,在这里认为数组里面的模型都是一样的模型
-       
+//    if ([set isKindOfClass:[NSArray class]]) {
+//        NSLog(@"开始分析数组");
+//        //这里需要比较数组的每一个键值对,在这里认为数组里面的模型都是一样的模型
+//       //暂时没有发现这种情况
+//        
+//    }else{
+    
+//        NSLog(@"开始分析字典");
         
-    }else{
-        
-        NSLog(@"开始分析字典");
-        
-        NSLog(@"%@",set);
-        
+//        NSLog(@"%@",set);
+    
         NSString* attributeData = [self arrayDropAnalaysis:set andClassName:className];
         
         //这里数据加入到文件中
@@ -161,14 +162,14 @@ static VXXFileManager* instance;
         
         NSMutableString* ms = [NSMutableString stringWithString:attributeData];
         
-        //将头添加到前面然后全部替换
+        //将头添加到前面然后全部替换VXXDictionary
         [ms insertString:begin_Interface atIndex:0];
         
         NSString* s = [self.headerData stringByReplacingOccurrencesOfString:begin_Interface withString:ms];
         
         self.headerData = [NSMutableString stringWithString:s];
         
-    }
+//    }
     
     
     
@@ -290,27 +291,20 @@ static VXXFileManager* instance;
 }
 
 
--(NSString*)arrayDropAnalaysis:(NSDictionary*)dict andClassName:(NSString*)className{
+-(NSString*)arrayDropAnalaysis:(VXXDictionary*)model andClassName:(NSString*)className{
     
     NSMutableString* mString = [NSMutableString string];
     
-    [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+    [model.dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
        
         if ([[obj class] isSubclassOfClass:[NSDictionary class]]) {
-           
-            NSLog(@"这个是字典类型另外处理");
+            
+            id value = [model.dict valueForKey:@"$type$"];
+            
+            NSLog(@"303 = %@",value);
+            //这里有两种情况
            
             NSDictionary* dict = obj;
-            
-            if (dict) {
-                
-                 NSLog(@"307dict = %@",dict);
-            }else{
-                
-                 NSLog(@"310dict = %@",dict);
-            }
-            
-            NSLog(@"dict = %@",dict);
             
             if (dict.count > 1) {
                 //需要生成摸型
