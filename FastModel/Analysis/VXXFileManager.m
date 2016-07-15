@@ -137,7 +137,7 @@ static VXXFileManager* instance;
 
 -(void)beginWrite2FileWithClassName:(NSString *)className anddata:(id)set{
     
-    if (className.length == 0||1) {
+    if (className.length == 0) {
         return;
     }
 
@@ -296,7 +296,9 @@ static VXXFileManager* instance;
     NSMutableString* mString = [NSMutableString string];
     
     [model.dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-       
+ 
+        
+#warning 在这里修改
         if ([[obj class] isSubclassOfClass:[NSDictionary class]]) {
             
             id value = [model.dict valueForKey:@"$type$"];

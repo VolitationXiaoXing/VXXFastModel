@@ -115,6 +115,7 @@ static VXXAnalysis* instance;
 -(VXXDictionary*)analysisArrary:(NSArray*)array{
     //遍历一层把
     VXXDictionary* model = [VXXDictionary new];
+    
     model.OBJtype = VXXDictionaryTypeArray;
     
     model.dict = [NSMutableDictionary dictionaryWithCapacity:10];
@@ -160,7 +161,7 @@ static VXXAnalysis* instance;
         //遍历一层把
     VXXDictionary* model = [VXXDictionary new];
     
-    model.OBJtype = VXXDictionaryTypeArray;
+    model.OBJtype = VXXDictionaryTypeDict;
     
     model.dict = [NSMutableDictionary dictionaryWithCapacity:10];
     
@@ -178,29 +179,31 @@ static VXXAnalysis* instance;
             
         }else if([[obj class] isSubclassOfClass:[NSDictionary class]]){
             
-            NSDictionary* dict1 = obj;
+            VXXDictionary* vxxDict = [self analysisDictionary:obj];
             
-            NSMutableDictionary* mDict = [NSMutableDictionary dictionaryWithCapacity:10];
             
-            [dict1 enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-                
-                if ([[obj class] isSubclassOfClass:[NSDictionary class]]) {
-                    
-                    [mDict setValue:[self analysisDictionary:obj] forKey:key];
-                    
-                }else if([[obj class] isSubclassOfClass:[NSArray class]]){
-                    
-                    [mDict setValue:[self analysisArrary:obj] forKey:key];
-                
-                }else{
-                    
-                    [mDict setValue:[obj class] forKey:key];
-                    
-                }
-                
-            }];
             
-             [newDict setValue:mDict forKey:key];
+//            NSMutableDictionary* mDict = [NSMutableDictionary dictionaryWithCapacity:10];
+//            
+//            [dict1 enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+//                
+//                if ([[obj class] isSubclassOfClass:[NSDictionary class]]) {
+//                    
+//                    [mDict setValue:[self analysisDictionary:obj] forKey:key];
+//                    
+//                }else if([[obj class] isSubclassOfClass:[NSArray class]]){
+//                    
+//                    [mDict setValue:[self analysisArrary:obj] forKey:key];
+//                
+//                }else{
+//                    
+//                    [mDict setValue:[obj class] forKey:key];
+//                    
+//                }
+//                
+//            }];
+            
+             [newDict setValue:vxxDict forKey:key];
             
         }else{
         

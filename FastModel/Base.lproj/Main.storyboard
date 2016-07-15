@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <scenes>
@@ -678,12 +677,12 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="URL" identifier="1" id="3PK-Y6-uI5">
-                                        <view key="view" id="Rqw-Hd-hHd" customClass="VXXURLView">
-                                            <rect key="frame" x="10" y="33" width="171" height="0.0"/>
+                                        <view key="view" ambiguous="YES" id="Rqw-Hd-hHd" customClass="VXXURLView">
+                                            <rect key="frame" x="10" y="33" width="472" height="240"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pbA-Yo-Tl5">
-                                                    <rect key="frame" x="15" y="-78" width="37" height="17"/>
+                                                    <rect key="frame" x="15" y="162" width="37" height="17"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="URL:" id="fSf-Nz-XU9">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -691,7 +690,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QB1-hD-Rvt">
-                                                    <rect key="frame" x="15" y="-163" width="37" height="17"/>
+                                                    <rect key="frame" x="15" y="77" width="37" height="17"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="类名:" id="XqB-rU-c3Q">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -699,7 +698,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8td-lC-jm6">
-                                                    <rect key="frame" x="186" y="-217" width="101" height="32"/>
+                                                    <rect key="frame" x="186" y="23" width="101" height="32"/>
                                                     <buttonCell key="cell" type="push" title="生成" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8vd-Si-t5r">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
@@ -709,7 +708,7 @@
                                                     </connections>
                                                 </button>
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QB6-nD-Tck">
-                                                    <rect key="frame" x="71" y="-169" width="96" height="29"/>
+                                                    <rect key="frame" x="71" y="71" width="96" height="29"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="text" drawsBackground="YES" id="3Dm-vq-DXg">
                                                         <font key="font" metaFont="system" size="14"/>
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -717,7 +716,7 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3M-RS-hje">
-                                                    <rect key="frame" x="71" y="-119" width="384" height="98"/>
+                                                    <rect key="frame" x="71" y="121" width="384" height="98"/>
                                                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="http://127.0.0.1/demo2.json" drawsBackground="YES" id="ue8-mL-DR8">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -759,7 +758,7 @@
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="JSON" identifier="" id="7tI-Ok-urb">
-                                        <view key="view" ambiguous="YES" id="G9I-BE-R8S">
+                                        <view key="view" id="G9I-BE-R8S">
                                             <rect key="frame" x="10" y="33" width="472" height="240"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
