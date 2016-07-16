@@ -11,6 +11,7 @@
 typedef enum : NSUInteger {
     VXXDictionaryTypeDict,
     VXXDictionaryTypeArray,
+     VXXDictionaryOther,
 } VXXDictionaryType;
 
 @interface VXXDictionary : NSObject

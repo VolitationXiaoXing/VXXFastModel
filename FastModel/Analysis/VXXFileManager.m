@@ -294,29 +294,42 @@ static VXXFileManager* instance;
 -(NSString*)arrayDropAnalaysis:(VXXDictionary*)model andClassName:(NSString*)className{
     
     NSMutableString* mString = [NSMutableString string];
-    
+#warning !!@#@!#
     [model.dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
- 
-        
-#warning 在这里修改
-        if ([[obj class] isSubclassOfClass:[NSDictionary class]]) {
+
+        if ([[obj class] isSubclassOfClass:[VXXDictionary class]]) {
             
-            id value = [model.dict valueForKey:@"$type$"];
             
-            NSLog(@"303 = %@",value);
-            //这里有两种情况
-           
-            NSDictionary* dict = obj;
+            VXXDictionary* dict = (VXXDictionary*)obj;
             
-            if (dict.count > 1) {
-                //需要生成摸型
-                [self beginWrite2FileWithClassName:key anddata:obj];
+            //这里有两种情况,一种是数组 一种是字典
+            
+            if(dict.OBJtype == VXXDictionaryTypeDict){
+              //这个是字典
+                if (dict.dict.count > 1) {
+                    //需要生成摸型
+                    [self beginWrite2FileWithClassName:key anddata:obj];
+                 }
                 
+                NSString* str = [[VXXOBJ2String shareOBJ2StringWithCurrentClass:className] dict2StringWithName:key andClassName:key];
+                
+                [mString appendString:str];
+                
+            }else{
+                //这个数组
+
+//                if (dict.dict.count > 1) {
+                    //需要生成摸型
+                    [self beginWrite2FileWithClassName:key anddata:obj];
+                    
+//                }
+                
+                NSString* str = [[VXXOBJ2String shareOBJ2StringWithCurrentClass:className] array2StringWithName:key andClassName:className];
+                
+                [mString appendString:str];
+
+            
             }
-            
-            NSString* str = [[VXXOBJ2String shareOBJ2StringWithCurrentClass:className] array2StringWithName:key andClassName:className];
-            
-            [mString appendString:str];
             
             
         }else{

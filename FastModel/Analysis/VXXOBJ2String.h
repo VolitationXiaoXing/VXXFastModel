@@ -20,6 +20,8 @@
 
 -(NSString*)array2StringWithName:(NSString *)name andClassName:(NSString*)className;
 
+-(NSString*)dict2StringWithName:(NSString*)name andClassName:(NSString*)className;
+
 -(NSString*)addRenameWords;
 
 -(VXXInitMethod*)addInitMethod;

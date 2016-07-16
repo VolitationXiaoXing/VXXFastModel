@@ -206,7 +206,7 @@ static VXXAnalysis* instance;
              [newDict setValue:vxxDict forKey:key];
             
         }else{
-        
+            
             [newDict setValue:[obj class] forKey:key];
         }
     }];

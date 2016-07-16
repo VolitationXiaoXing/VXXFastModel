@@ -146,6 +146,30 @@ static VXXOBJ2String* instance;
     
 }
 
+-(NSString*)dict2StringWithName:(NSString*)name andClassName:(NSString*)className{
+    
+    //数组类型需要记录下来,需要生成新的构造方法构造方法
+    if ([self.modelArr objectForKey:className]) {
+        //如果有这个键将
+        NSArray* arr = [self.modelArr objectForKey:className];
+        
+        NSMutableArray* mArr = [NSMutableArray arrayWithArray:arr];
+        
+        [mArr addObject:name];
+        
+        [self.modelArr setValue:mArr forKey:className];
+        
+    }else{
+        [self.modelArr setValue:@[name] forKey:className];
+    }
+    
+    NSString* newName = [VXXChangClassName changeNameWithName:name andMode:@"class"];
+    
+       NSString* s = [NSString stringWithFormat:@"\r\n@property (copy,nonatomic) %@* %@;\r\n",newName,name];
+    
+     return s;
+}
+
 
 -(NSString*)array2StringWithName:(NSString *)name andClassName:(NSString*)className{
     
@@ -163,8 +187,6 @@ static VXXOBJ2String* instance;
     }else{
         [self.modelArr setValue:@[name] forKey:className];
     }
-    
-   
     
     NSString* s = [NSString stringWithFormat:@"\r\n@property (copy,nonatomic) NSArray* %@;\r\n",name];
     
@@ -261,8 +283,6 @@ static VXXOBJ2String* instance;
 +(void)clearAll{
     instance = nil;
 }
-
-
 
 
 @end
