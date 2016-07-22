@@ -231,7 +231,7 @@ static VXXOBJ2String* instance;
                 
                 
                 //构造方法
-                NSString* initMethodString = [NSString stringWithFormat:@"\r\n\t\tNSMutableArray* mArr%@ = [NSMutableArray arrayWithCapacity:10];\r\n\r\n\t\tfor (NSDictionary* dict in self.%@) {\r\n\r\n\t\t\t%@* p = [%@ %@WithDict:dict];\r\n\r\n\t\t\t[mArr%@ addObject:p];\r\n\r\n\t\t\tself.%@ = mArr%@.copy;\r\n\r\n\t\t}",newName,name,newName,newName,name,newName,name,newName];
+                NSString* initMethodString = [NSString stringWithFormat:@"\r\n\t\tNSMutableArray* mArr%@ = [NSMutableArray arrayWithCapacity:10];\r\n\r\n\t\tfor (NSDictionary* dict in self.%@) {\r\n\r\n\t\t\t%@* p = [%@ %@WithDict:dict];\r\n\r\n\t\t\t[mArr%@ addObject:p];\r\n\t\t}\r\n\r\n\t\tself.%@ = mArr%@.copy;\r\n\r\n\t\t",newName,name,newName,newName,name,newName,name,newName];
                 
                 [initMethodM appendString:initMethodString];
 
