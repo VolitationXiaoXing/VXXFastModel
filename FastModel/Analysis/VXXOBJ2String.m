@@ -16,6 +16,8 @@
 
 @property (strong,nonatomic) NSMutableDictionary* modelArr;
 
+@property (strong,nonatomic) NSMutableDictionary* modelDict;
+
 @property (strong,nonatomic) NSString* currentClass;
 
 @end
@@ -148,19 +150,24 @@ static VXXOBJ2String* instance;
 
 -(NSString*)dict2StringWithName:(NSString*)name andClassName:(NSString*)className{
     
-    //数组类型需要记录下来,需要生成新的构造方法构造方法
-    if ([self.modelArr objectForKey:className]) {
+    
+    NSLog(@"152name = %@,className = %@",name,className);
+    
+    //字典类型需要记录下来,需要生成新的构造方法构造方法
+    if ([self.modelDict objectForKey:className]) {
         //如果有这个键将
-        NSArray* arr = [self.modelArr objectForKey:className];
+        NSArray* arr = [self.modelDict objectForKey:className];
         
         NSMutableArray* mArr = [NSMutableArray arrayWithArray:arr];
         
         [mArr addObject:name];
         
-        [self.modelArr setValue:mArr forKey:className];
+        [self.modelDict setValue:mArr forKey:className];
         
     }else{
-        [self.modelArr setValue:@[name] forKey:className];
+        
+        [self.modelDict setValue:@[name] forKey:className];
+        
     }
     
     NSString* newName = [VXXChangClassName changeNameWithName:name andMode:@"class"];
@@ -240,11 +247,54 @@ static VXXOBJ2String* instance;
             
         }
         
-        initMethod.importWords = importM.copy;
+    }];
+    
+    NSLog(@"name = %@-------%@",self.currentClass,self.modelDict);
+    
+    [self.modelDict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         
-        initMethod.iniWords = initMethodM.copy;
+        if([self.currentClass isEqualToString:key]){
+            //当前类含有数组,需要添加语句
+            initMethod.hasArray = YES;
+            
+            NSLog(@"当前类含有数组,需要添加语句");
+            
+            NSAssert([[obj class] isSubclassOfClass:[NSArray class]], @"195 obj类型不是数组类型,obj必须是数组类型.");
+            
+            NSArray* arr = obj;
+            
+            [arr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                
+                NSString* name = obj;
+                
+                NSString* newName = [VXXChangClassName changeNameWithName:name andMode:@"class"];
+                
+                //头文件
+                
+                NSString* importWordString = [NSString stringWithFormat:@"\n#import \"%@.h\"\r\n",newName];
+                
+                [importM appendString:importWordString];
+                
+                
+                
+                //构造方法
+                NSString* initMethodString = [NSString stringWithFormat:@"\r\n\t\tNSMutableArray* mArr%@ = [NSMutableArray arrayWithCapacity:10];\r\n\r\n\t\tfor (NSDictionary* dict in self.%@) {\r\n\r\n\t\t\t%@* p = [%@ %@WithDict:dict];\r\n\r\n\t\t\t[mArr%@ addObject:p];\r\n\t\t}\r\n\r\n\t\tself.%@ = mArr%@.copy;\r\n\r\n\t\t",newName,name,newName,newName,name,newName,name,newName];
+                
+                [initMethodM appendString:initMethodString];
+                
+                
+            }];
+            
+        }
+
         
     }];
+    
+    
+    initMethod.importWords = importM.copy;
+    
+    initMethod.iniWords = initMethodM.copy;
+    
     
     return initMethod;
 }
@@ -258,6 +308,9 @@ static VXXOBJ2String* instance;
     if ([s isEqualToString:@"NSArray"]) {
         
         [ms appendString:@"\n+(NSArray*)$classNameM/$WithData:(NSData*)data{\n\n\tNSArray* d = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];\n\n\tNSMutableArray* mArr = [NSMutableArray arrayWithCapacity:20];\n\n\tfor (NSDictionary* dict in d) {\n\n\t\t$className/$* t = [$className/$ $classNameM/$WithDict:dict];\n\n\t\t[mArr addObject:t];\n\n\t}\n\n\treturn mArr.copy;\n}"];
+        
+    }else{
+        
         
     }
     

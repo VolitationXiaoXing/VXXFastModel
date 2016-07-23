@@ -140,19 +140,6 @@ static VXXFileManager* instance;
     if (className.length == 0) {
         return;
     }
-
-//    NSLog(@"136 className = %@",className);
-    
-//    if ([set isKindOfClass:[NSArray class]]) {
-//        NSLog(@"开始分析数组");
-//        //这里需要比较数组的每一个键值对,在这里认为数组里面的模型都是一样的模型
-//       //暂时没有发现这种情况
-//        
-//    }else{
-    
-//        NSLog(@"开始分析字典");
-        
-//        NSLog(@"%@",set);
     
         NSString* attributeData = [self arrayDropAnalaysis:set andClassName:className];
         
@@ -168,8 +155,6 @@ static VXXFileManager* instance;
         NSString* s = [self.headerData stringByReplacingOccurrencesOfString:begin_Interface withString:ms];
         
         self.headerData = [NSMutableString stringWithString:s];
-        
-//    }
     
     
     
@@ -317,12 +302,7 @@ static VXXFileManager* instance;
                 
             }else{
                 //这个数组
-
-//                if (dict.dict.count > 1) {
-                    //需要生成摸型
-                    [self beginWrite2FileWithClassName:key anddata:obj];
-                    
-//                }
+                [self beginWrite2FileWithClassName:key anddata:obj];
                 
                 NSString* str = [[VXXOBJ2String shareOBJ2StringWithCurrentClass:className] array2StringWithName:key andClassName:className];
                 

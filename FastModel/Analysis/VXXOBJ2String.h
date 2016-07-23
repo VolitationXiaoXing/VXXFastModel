@@ -30,6 +30,8 @@
 
 -(NSString*)addInitExtraInMFile;
 
+
+//清楚所有的数据
 +(void)clearAll;
 
 @end
