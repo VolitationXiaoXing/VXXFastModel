@@ -115,6 +115,11 @@ static VXXOBJ2String* instance;
 //检查是否
 -(NSString*)checkNameAndReplace:(NSString*)name{
     
+    if([name isEqualToString:@"description"]){
+        name = @"descriptionx";
+    }
+    
+    
     if ([name isEqualToString:@"id"]) {
         
         name = @"idx";

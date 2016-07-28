@@ -113,6 +113,10 @@ static VXXAnalysis* instance;
 
 
 -(VXXDictionary*)analysisArrary:(NSArray*)array{
+    
+    //这里需要判断
+    
+    
     //遍历一层把
     VXXDictionary* model = [VXXDictionary new];
     
@@ -122,35 +126,43 @@ static VXXAnalysis* instance;
     
     NSMutableDictionary* newDict = model.dict;
     
-   [array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-       
-       NSDictionary * dict = obj;
-       
-       [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-           
-           //判断新的字典的里面是否有对应的key
-           if(!newDict[key]){
-               
-               if([[obj class] isSubclassOfClass:[NSArray class]]){
-                   
-                   [newDict setValue:[self analysisArrary:obj] forKey:key];
-                   
-               }else if([[obj class] isSubclassOfClass:[NSDictionary class]]){
-                   
-                   [newDict setValue:[self analysisDictionary:obj] forKey:key];
-                   
-               
-               }else{
-               
-                   [newDict setValue:[obj class] forKey:key];
-               
-               }
-               
-           }
-           
-       }];
-       
-   }];
+    
+    for ( NSDictionary * dict in array) {
+        
+        if ([[dict class] isSubclassOfClass:[NSString class]]) {
+            
+            continue;
+        }
+        
+        [dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            
+            //判断新的字典的里面是否有对应的key
+            if(!newDict[key]){
+                
+                if([[obj class] isSubclassOfClass:[NSArray class]]){
+                    
+                        
+                    [newDict setValue:[self analysisArrary:obj] forKey:key];
+                    
+                    
+                }else if([[obj class] isSubclassOfClass:[NSDictionary class]]){
+                    
+                    [newDict setValue:[self analysisDictionary:obj] forKey:key];
+                    
+                    
+                }else{
+                    
+                    [newDict setValue:[obj class] forKey:key];
+                    
+                }
+                
+            }
+            
+        }];
+
+        
+    }
+
     
     return model;
 }
@@ -180,28 +192,6 @@ static VXXAnalysis* instance;
         }else if([[obj class] isSubclassOfClass:[NSDictionary class]]){
             
             VXXDictionary* vxxDict = [self analysisDictionary:obj];
-            
-            
-            
-//            NSMutableDictionary* mDict = [NSMutableDictionary dictionaryWithCapacity:10];
-//            
-//            [dict1 enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-//                
-//                if ([[obj class] isSubclassOfClass:[NSDictionary class]]) {
-//                    
-//                    [mDict setValue:[self analysisDictionary:obj] forKey:key];
-//                    
-//                }else if([[obj class] isSubclassOfClass:[NSArray class]]){
-//                    
-//                    [mDict setValue:[self analysisArrary:obj] forKey:key];
-//                
-//                }else{
-//                    
-//                    [mDict setValue:[obj class] forKey:key];
-//                    
-//                }
-//                
-//            }];
             
              [newDict setValue:vxxDict forKey:key];
             

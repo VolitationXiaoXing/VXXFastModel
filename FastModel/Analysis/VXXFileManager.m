@@ -301,9 +301,12 @@ static VXXFileManager* instance;
                 [mString appendString:str];
                 
             }else{
-                //这个数组
-                [self beginWrite2FileWithClassName:key anddata:obj];
-                
+                //这个数组数字------只有一个元素的时候不要创建新类
+                if (dict.dict.count > 1) {
+                    //需要生成摸型
+                     [self beginWrite2FileWithClassName:key anddata:obj];
+                }
+      
                 NSString* str = [[VXXOBJ2String shareOBJ2StringWithCurrentClass:className] array2StringWithName:key andClassName:className];
                 
                 [mString appendString:str];

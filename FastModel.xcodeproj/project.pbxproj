@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		EA3B1DAB1D26CEF100B9C7A7 /* VXXDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3B1DAA1D26CEF100B9C7A7 /* VXXDictionary.m */; };
 		EA6650B91D24EFC100FDAAC1 /* VXXChangClassName.m in Sources */ = {isa = PBXBuildFile; fileRef = EA6650B81D24EFC100FDAAC1 /* VXXChangClassName.m */; };
+		EA7067DD1D4A604C0015B062 /* BUG in Resources */ = {isa = PBXBuildFile; fileRef = EA7067DC1D4A604C0015B062 /* BUG */; };
 		EA87225F1D1CF7B4001DA507 /* VXXFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA87225E1D1CF7B4001DA507 /* VXXFileManager.m */; };
 		EA8722851D1D0CCF001DA507 /* Model.hres in Resources */ = {isa = PBXBuildFile; fileRef = EA8722831D1D0CCF001DA507 /* Model.hres */; };
 		EA8722861D1D0CCF001DA507 /* Model.mres in Resources */ = {isa = PBXBuildFile; fileRef = EA8722841D1D0CCF001DA507 /* Model.mres */; };
@@ -29,6 +30,7 @@
 		EA3B1DAA1D26CEF100B9C7A7 /* VXXDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VXXDictionary.m; sourceTree = "<group>"; };
 		EA6650B71D24EFC100FDAAC1 /* VXXChangClassName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VXXChangClassName.h; sourceTree = "<group>"; };
 		EA6650B81D24EFC100FDAAC1 /* VXXChangClassName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VXXChangClassName.m; sourceTree = "<group>"; };
+		EA7067DC1D4A604C0015B062 /* BUG */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = BUG; sourceTree = "<group>"; };
 		EA87225D1D1CF7B4001DA507 /* VXXFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VXXFileManager.h; sourceTree = "<group>"; };
 		EA87225E1D1CF7B4001DA507 /* VXXFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VXXFileManager.m; sourceTree = "<group>"; };
 		EA8722831D1D0CCF001DA507 /* Model.hres */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Model.hres; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 		EAC22F4D1D1CD7F20059B804 = {
 			isa = PBXGroup;
 			children = (
+				EA7067DC1D4A604C0015B062 /* BUG */,
 				EAC22F581D1CD7F20059B804 /* FastModel */,
 				EAC22F571D1CD7F20059B804 /* Products */,
 			);
@@ -222,6 +225,7 @@
 			files = (
 				EA8722861D1D0CCF001DA507 /* Model.mres in Resources */,
 				EAC22F631D1CD7F20059B804 /* Assets.xcassets in Resources */,
+				EA7067DD1D4A604C0015B062 /* BUG in Resources */,
 				EA8722851D1D0CCF001DA507 /* Model.hres in Resources */,
 				EAC22F661D1CD7F20059B804 /* Main.storyboard in Resources */,
 			);

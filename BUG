@@ -1,0 +1,4 @@
+1.大写类,报错
+2.数组情况下,构造方法,和导入错误
+测试URL:http://api.dianping.com/v1/deal/find_deals?appkey=11474086&city=%E5%8C%97%E4%BA%AC&limit=20&page=1&sign=628BA875C8BF639434D81AD69ED5A78A10D205EC
+3.对字典嵌套的构造方法没有用
