@@ -16,4 +16,6 @@
 
 -(void)beginWrite2FileWithClassName:(NSString *)className  anddata:(id)data;
 
+-(void)reset;
+
 @end

@@ -14,6 +14,8 @@
 
 +(instancetype)shareAnalysis;
 
+-(void)reset;
+
 
 
 @end

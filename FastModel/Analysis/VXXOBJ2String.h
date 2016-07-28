@@ -30,8 +30,10 @@
 
 -(NSString*)addInitExtraInMFile;
 
+-(void)cleanErrorArrayWithClassName:(NSString*)className;
+
 
 //清楚所有的数据
-+(void)clearAll;
+-(void)reset;
 
 @end

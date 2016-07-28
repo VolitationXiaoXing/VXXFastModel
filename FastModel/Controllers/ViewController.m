@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "VXXAnalysis.h"
 #import "VXXOBJ2String.h"
+#import "VXXFileManager.h"
 
 
 
@@ -16,6 +17,8 @@
 
 @property (weak) IBOutlet NSTextField *urlTextField;
 @property (weak) IBOutlet NSTextField *classNameTextField;
+
+@property (assign,nonatomic) BOOL isClicked;
 
 
 //网络获取的URL
@@ -31,7 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
+    self.isClicked = NO;
 }
 
 - (void)setRepresentedObject:(id)representedObject {
@@ -44,6 +47,17 @@
 
 - (IBAction)onAnalysisBtnCliceked:(NSButton *)sender {
     
+    if (self.isClicked) {
+        
+        [[VXXOBJ2String shareOBJ2StringWithCurrentClass:@""] reset];
+        
+        [[VXXAnalysis shareAnalysis] reset];
+        
+        [[VXXFileManager shareFileManager] reset];
+        
+    }
+
+    
     self.url = self.urlTextField.stringValue;
     
     NSLog(@"url = %@",self.url);
@@ -51,8 +65,6 @@
     self.className = self.classNameTextField.stringValue;
     
     [self loadDataFromNetWorkOnSuccess:^(NSData * data) {
-        
-        [VXXOBJ2String clearAll];
         
         VXXAnalysis* a = [VXXAnalysis shareAnalysis];
         
@@ -64,6 +76,9 @@
         NSLog(@"%@",result);
         
     }];
+    
+    
+    self.isClicked = YES;
 }
 
 
@@ -111,7 +126,6 @@
                 
                 NSLog(@"系统错误35:blockFail是空的");
                 
-                
             }
             
         }else{
@@ -129,11 +143,7 @@
         
     }];
     
-    
-    
 
-    
-    
 }
 
 

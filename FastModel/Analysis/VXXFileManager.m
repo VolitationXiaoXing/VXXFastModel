@@ -41,8 +41,6 @@
 
 @property (copy,nonatomic)NSMutableString * contentData;
 
-//@property (copy,nonatomic) NSArray* classArr;
-
 @property (strong,nonatomic) NSFileManager* fileManager;
 
 @end
@@ -279,7 +277,7 @@ static VXXFileManager* instance;
 -(NSString*)arrayDropAnalaysis:(VXXDictionary*)model andClassName:(NSString*)className{
     
     NSMutableString* mString = [NSMutableString string];
-#warning !!@#@!#
+    
     [model.dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
 
         if ([[obj class] isSubclassOfClass:[VXXDictionary class]]) {
@@ -305,6 +303,9 @@ static VXXFileManager* instance;
                 if (dict.dict.count > 1) {
                     //需要生成摸型
                      [self beginWrite2FileWithClassName:key anddata:obj];
+                }else{
+                    //不需要生成新的模型的时候,需要删除数组模型中的缓存
+                    [[VXXOBJ2String shareOBJ2StringWithCurrentClass:className] cleanErrorArrayWithClassName:key];
                 }
       
                 NSString* str = [[VXXOBJ2String shareOBJ2StringWithCurrentClass:className] array2StringWithName:key andClassName:className];
@@ -348,6 +349,20 @@ static VXXFileManager* instance;
    
     
     return stringData;
+}
+
+-(void)reset{
+
+    self.headerNativeData = nil;
+    
+    self.headerData = nil;
+    
+    self.contentNativeData = nil;
+    
+    self.contentData = nil;
+    
+    self.fileManager = nil;
+    
 }
 
 

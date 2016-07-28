@@ -182,6 +182,7 @@ static VXXOBJ2String* instance;
 
 -(NSString*)array2StringWithName:(NSString *)name andClassName:(NSString*)className{
     
+    
     //数组类型需要记录下来,需要生成新的构造方法构造方法
     if ([self.modelArr objectForKey:className]) {
         //如果有这个键将
@@ -201,6 +202,15 @@ static VXXOBJ2String* instance;
     
     return s;
 }
+
+-(void)cleanErrorArrayWithClassName:(NSString*)className{
+    
+    [self.modelArr removeObjectForKey:className];
+    
+    NSLog(@"%@--208清除数组 %@",className,self.modelArr);
+    
+}
+
 
 -(VXXInitMethod*)addInitMethod{
     
@@ -335,8 +345,15 @@ static VXXOBJ2String* instance;
 }
 
 
-+(void)clearAll{
-    instance = nil;
+-(void)reset{
+    
+    self.modelArr = nil;
+    
+    self.modelDict = nil;
+    
+    self.currentClass = nil;
+    
+    self.undefineKeyList = nil;
 }
 
 

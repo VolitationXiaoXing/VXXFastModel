@@ -19,15 +19,6 @@
 
 @implementation VXXAnalysis
 
-//-(NSMutableArray *)classArr{
-//    
-//    if (!_classArr) {
-//        
-//        _classArr = [NSMutableArray array];
-//    }
-//    
-//    return _classArr;
-//}
 
 static VXXAnalysis* instance;
 
@@ -202,6 +193,13 @@ static VXXAnalysis* instance;
     }];
     
     return model;
+}
+
+
+-(void)reset{
+    
+    
+    
 }
 
 
