@@ -150,9 +150,6 @@ static VXXOBJ2String* instance;
 
 -(NSString*)dict2StringWithName:(NSString*)name andClassName:(NSString*)className{
     
-    
-    NSLog(@"152name = %@,className = %@",name,className);
-    
     //字典类型需要记录下来,需要生成新的构造方法构造方法
     if ([self.modelDict objectForKey:className]) {
         //如果有这个键将
