@@ -23,8 +23,6 @@
         
         NSString* endString  = [className substringWithRange:NSMakeRange(1, className.length - 1)];
         
-//        NSLog(@"headString = %@,endString = %@",headString,endString);
-        
         newName = [headString stringByAppendingString:endString];
 
     }else if([mode isEqualToString:@"method"]){

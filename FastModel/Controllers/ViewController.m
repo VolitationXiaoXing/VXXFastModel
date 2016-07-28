@@ -64,6 +64,17 @@
     
     self.className = self.classNameTextField.stringValue;
     
+    //将大写的类名改成小写的类名
+    NSString* headString  = [self.className substringWithRange:NSMakeRange(0, 1)];
+    
+    headString = [headString lowercaseString];
+    
+    NSString* endString  = [self.className substringWithRange:NSMakeRange(1, self.className.length - 1)];
+    
+    self.className = [headString stringByAppendingString:endString];
+    
+    
+    
     [self loadDataFromNetWorkOnSuccess:^(NSData * data) {
         
         VXXAnalysis* a = [VXXAnalysis shareAnalysis];
