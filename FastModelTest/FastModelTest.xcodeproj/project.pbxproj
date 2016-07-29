@@ -7,18 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EA31265C1D262CE1002F7A12 /* News.m in Sources */ = {isa = PBXBuildFile; fileRef = EA31265B1D262CE1002F7A12 /* News.m */; };
 		EA327D841D22C13400811DA3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EA327D831D22C13400811DA3 /* main.m */; };
 		EA327D871D22C13400811DA3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EA327D861D22C13400811DA3 /* AppDelegate.m */; };
 		EA327D8A1D22C13400811DA3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA327D891D22C13400811DA3 /* ViewController.m */; };
 		EA327D8D1D22C13400811DA3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA327D8B1D22C13400811DA3 /* Main.storyboard */; };
 		EA327D8F1D22C13400811DA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA327D8E1D22C13400811DA3 /* Assets.xcassets */; };
 		EA327D921D22C13400811DA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA327D901D22C13400811DA3 /* LaunchScreen.storyboard */; };
+		EA7068011D4AE0650015B062 /* Businesses.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7067FC1D4AE0650015B062 /* Businesses.m */; };
+		EA7068021D4AE0650015B062 /* Deals.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7067FE1D4AE0650015B062 /* Deals.m */; };
+		EA7068031D4AE0650015B062 /* Goods.m in Sources */ = {isa = PBXBuildFile; fileRef = EA7068001D4AE0650015B062 /* Goods.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EA31265A1D262CE1002F7A12 /* News.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = News.h; sourceTree = "<group>"; };
-		EA31265B1D262CE1002F7A12 /* News.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = News.m; sourceTree = "<group>"; };
 		EA327D7F1D22C13400811DA3 /* FastModelTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastModelTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA327D831D22C13400811DA3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		EA327D851D22C13400811DA3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -29,6 +29,12 @@
 		EA327D8E1D22C13400811DA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA327D911D22C13400811DA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EA327D931D22C13400811DA3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA7067FB1D4AE0650015B062 /* Businesses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Businesses.h; sourceTree = "<group>"; };
+		EA7067FC1D4AE0650015B062 /* Businesses.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Businesses.m; sourceTree = "<group>"; };
+		EA7067FD1D4AE0650015B062 /* Deals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deals.h; sourceTree = "<group>"; };
+		EA7067FE1D4AE0650015B062 /* Deals.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Deals.m; sourceTree = "<group>"; };
+		EA7067FF1D4AE0650015B062 /* Goods.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Goods.h; sourceTree = "<group>"; };
+		EA7068001D4AE0650015B062 /* Goods.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Goods.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +67,12 @@
 		EA327D811D22C13400811DA3 /* FastModelTest */ = {
 			isa = PBXGroup;
 			children = (
-				EA31265A1D262CE1002F7A12 /* News.h */,
-				EA31265B1D262CE1002F7A12 /* News.m */,
+				EA7067FB1D4AE0650015B062 /* Businesses.h */,
+				EA7067FC1D4AE0650015B062 /* Businesses.m */,
+				EA7067FD1D4AE0650015B062 /* Deals.h */,
+				EA7067FE1D4AE0650015B062 /* Deals.m */,
+				EA7067FF1D4AE0650015B062 /* Goods.h */,
+				EA7068001D4AE0650015B062 /* Goods.m */,
 				EA327D851D22C13400811DA3 /* AppDelegate.h */,
 				EA327D861D22C13400811DA3 /* AppDelegate.m */,
 				EA327D881D22C13400811DA3 /* ViewController.h */,
@@ -154,10 +164,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA7068031D4AE0650015B062 /* Goods.m in Sources */,
 				EA327D8A1D22C13400811DA3 /* ViewController.m in Sources */,
 				EA327D871D22C13400811DA3 /* AppDelegate.m in Sources */,
-				EA31265C1D262CE1002F7A12 /* News.m in Sources */,
 				EA327D841D22C13400811DA3 /* main.m in Sources */,
+				EA7068011D4AE0650015B062 /* Businesses.m in Sources */,
+				EA7068021D4AE0650015B062 /* Deals.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

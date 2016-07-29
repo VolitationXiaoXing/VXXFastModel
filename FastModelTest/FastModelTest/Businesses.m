@@ -1,21 +1,21 @@
 //
-//  News.m
+//  Businesses.m
 //  FastModel
 //
 //  Created by Volitation小星 on 16/6/24.
 //  Copyright © 2016年 wangkun. All rights reserved.
 //
 
-#import "News.h"
+#import "Businesses.h"
 
 
-@interface News ()
+@interface Businesses ()
 
 
 
 @end
 
-@implementation News
+@implementation Businesses
 
 
 
@@ -45,28 +45,12 @@
 }
 
 
-+ (instancetype)newsWithDict:(NSDictionary *)dict {
++ (instancetype)businessesWithDict:(NSDictionary *)dict {
 
     return [[self alloc] initWithDict:dict];
 
 }
 
 
-+(NSArray*)newsWithData:(NSData*)data{
-
-	NSArray* d = [NSJSONSerialization JSONObjectWithData:data options:0 error:NULL];
-
-	NSMutableArray* mArr = [NSMutableArray arrayWithCapacity:20];
-
-	for (NSDictionary* dict in d) {
-
-		News* t = [News newsWithDict:dict];
-
-		[mArr addObject:t];
-
-	}
-
-	return mArr.copy;
-}
 
 @end

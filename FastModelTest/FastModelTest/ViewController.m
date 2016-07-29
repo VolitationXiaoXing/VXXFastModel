@@ -7,7 +7,8 @@
 //
 
 #import "ViewController.h"
-#import "News.h"
+#import "Goods.h"
+#import "Deals.h"
 
 @interface ViewController ()
 
@@ -20,14 +21,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.url = @"http://news.coolban.com/Api/Index/news_list/app/2/cat/7/limit/20/time/1445327313/type/0?channel=appstore&uuid=64543C0F-89E1-4D63-B947-DB4C504D13B1&net=5&model=iPhone&ver=1.0.5";
+    self.url = @"http://api.dianping.com/v1/deal/find_deals?appkey=11474086&city=%E5%8C%97%E4%BA%AC&limit=20&page=1&sign=628BA875C8BF639434D81AD69ED5A78A10D205EC";
     
     [self loadDataFromNetWorkOnSuccess:^(NSData * data){
         
+        NSMutableDictionary* dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         
-        NSArray * news = [News newsWithData:data];
+        Goods* goodsArr = [Goods goodsWithDict:dict];
+        Deals* deals = goodsArr.deals[0];
         
-        NSLog(@"%@",news);
+        NSLog(@"%@",deals.categories);
         
     } OrFail:^(NSString * e){
         NSLog(@"失败了");
