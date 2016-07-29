@@ -17,3 +17,11 @@
 * 2.将JSon文件转化成模型(未实现)
 
 * 3.支持XML(未实现) 
+
+###工具截图
+
+工具界面:
+![MacDown logo](images/4A016253-8636-4D69-8FD5-05001EEC4B7A.png)
+
+生成的文件:
+![MacDown logo](images/897F18AA-2CF4-45B8-8D41-1F5D765C5C1D.png)
