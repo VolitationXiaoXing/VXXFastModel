@@ -717,8 +717,9 @@
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3M-RS-hje">
                                                     <rect key="frame" x="71" y="121" width="384" height="98"/>
-                                                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="http://127.0.0.1/demo2.json" drawsBackground="YES" id="ue8-mL-DR8">
+                                                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ue8-mL-DR8">
                                                         <font key="font" metaFont="system"/>
+                                                        <string key="title">http://api.dianping.com/v1/deal/find_deals?appkey=11474086&amp;city=%E5%8C%97%E4%BA%AC&amp;limit=20&amp;page=1&amp;sign=628BA875C8BF639434D81AD69ED5A78A10D205EC</string>
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>

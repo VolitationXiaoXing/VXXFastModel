@@ -20,6 +20,8 @@
 
 @property (strong,nonatomic) NSString* currentClass;
 
+@property (strong,nonatomic) NSMutableDictionary* errorArr;
+
 @end
 
 @implementation VXXOBJ2String
@@ -41,6 +43,15 @@
     }
     
     return _undefineKeyList;
+}
+
+-(NSMutableDictionary *)errorArr{
+    
+    if (!_errorArr) {
+        _errorArr = [NSMutableDictionary dictionaryWithCapacity:20];
+    }
+    
+    return _errorArr;
 }
 
 -(NSMutableDictionary *)modelArr{
@@ -203,16 +214,34 @@ static VXXOBJ2String* instance;
     return s;
 }
 
--(void)cleanErrorArrayWithClassName:(NSString*)className{
+-(void)cleanErrorArrayWithClassName:(NSString*)name{
     
-    [self.modelArr removeObjectForKey:className];
+    //将错误的数组类名,加入到错误数组中
     
-    NSLog(@"%@--208清除数组 %@",className,self.modelArr);
+    //数组类型需要记录下来,需要生成新的构造方法构造方法
+    if ([self.errorArr objectForKey:self.currentClass]) {
+        //如果有这个键将
+        NSArray* arr = [self.errorArr objectForKey:self.currentClass];
+        
+        NSMutableArray* mArr = [NSMutableArray arrayWithArray:arr];
+        
+        [mArr addObject:name];
+        
+        [self.errorArr setValue:mArr forKey:self.currentClass];
+        
+    }else{
+        [self.errorArr setValue:@[name] forKey:self.currentClass];
+    }
     
+    
+
 }
 
 
 -(VXXInitMethod*)addInitMethod{
+    
+    NSLog(@"237 %@",self.errorArr);
+    
     
     VXXInitMethod* initMethod = [VXXInitMethod new];
     
@@ -224,7 +253,27 @@ static VXXOBJ2String* instance;
     NSMutableString* initMethodM = [NSMutableString string];
     
     [self.modelArr enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
-       
+        
+        NSLog(@"257key = %@, obj = %@",key,obj);
+        //删除错误的素组类
+        for (NSString* name in self.errorArr) {
+            if ([name isEqualToString:key]) {
+                //找到对应的类名
+                NSMutableArray* mDict = obj;
+                //得到错误数组然后删除数据
+                NSArray* arr = [self.errorArr valueForKey:name];
+                
+                for (NSString* key in arr) {
+                    
+                    [mDict removeObject:key];
+                    
+                }
+                
+            }
+        }
+        
+        NSLog(@"275key = %@, obj = %@",key,obj);
+        
         if([self.currentClass isEqualToString:key]){
             //当前类含有数组,需要添加语句
             initMethod.hasArray = YES;
