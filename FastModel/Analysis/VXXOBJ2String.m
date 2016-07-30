@@ -92,17 +92,17 @@ static VXXOBJ2String* instance;
     
     if ([className isKindOfClass:[NSString class]]) {
         //数字类型
-          s = [NSString stringWithFormat:@"\r\n@property (copy,nonatomic) %@* %@;\r\n",@"NSNumber",newName];
+          s = [NSString stringWithFormat:@"\r\n@property (strong,nonatomic) %@* %@;\r\n",@"NSNumber",newName];
         return s;
     }
-    
+    //字符串
     if ([className isSubclassOfClass:[NSString class]]) {
         s = [NSString stringWithFormat:@"\r\n@property (copy,nonatomic) %@* %@;\r\n",@"NSString",newName];
     }
     
     if (!s) {
         // s为空的时候这个时候是说明是布尔
-        s = [NSString stringWithFormat:@"\r\n@property (copy,nonatomic) %@* %@;\r\n",@"NSNumber",newName];
+        s = [NSString stringWithFormat:@"\r\n@property (strong,nonatomic) %@* %@;\r\n",@"NSNumber",newName];
         
     }
     
@@ -185,7 +185,7 @@ static VXXOBJ2String* instance;
     
     NSString* newName = [VXXChangClassName changeNameWithName:name andMode:@"class"];
     
-       NSString* s = [NSString stringWithFormat:@"\r\n@property (copy,nonatomic) %@* %@;\r\n",newName,name];
+       NSString* s = [NSString stringWithFormat:@"\r\n@property (strong,nonatomic) %@* %@;\r\n",newName,name];
     
      return s;
 }
@@ -209,7 +209,7 @@ static VXXOBJ2String* instance;
         [self.modelArr setValue:@[name] forKey:className];
     }
     
-    NSString* s = [NSString stringWithFormat:@"\r\n@property (copy,nonatomic) NSArray* %@;\r\n",name];
+    NSString* s = [NSString stringWithFormat:@"\r\n@property (strong,nonatomic) NSArray* %@;\r\n",name];
     
     return s;
 }
@@ -254,7 +254,6 @@ static VXXOBJ2String* instance;
     
     [self.modelArr enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         
-        NSLog(@"257key = %@, obj = %@",key,obj);
         //删除错误的素组类
         for (NSString* name in self.errorArr) {
             if ([name isEqualToString:key]) {

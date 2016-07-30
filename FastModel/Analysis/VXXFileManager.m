@@ -173,24 +173,8 @@ static VXXFileManager* instance;
     
     headerResult = [self changeNameWithData:headerResult andClassName:className andMode:@"method"];
 
-    
-    /**
-     *  下面将标志取消
-     */
-    headerResult = [headerResult stringByReplacingOccurrencesOfString:begin_Interface withString:@""];
-    
-    headerResult = [headerResult stringByReplacingOccurrencesOfString:end_Interface withString:@""];
-    
-    //写入
-    NSData* data = [headerResult dataUsingEncoding:NSUTF8StringEncoding];
-    
-    NSString* newName = [VXXChangClassName changeNameWithName:className andMode:@"class"];
-    
-    NSString* fileName = [NSString stringWithFormat:@"%@.h",newName];
-    
-    NSString* resultPath = [target stringByAppendingPathComponent:fileName];
-    
-    [self.fileManager createFileAtPath:resultPath contents:data attributes:nil];
+
+
     
     
     //m文件写入
@@ -212,7 +196,7 @@ static VXXFileManager* instance;
         //当前类中有数组元素,构造方法需要修改
         NSString* initMethodString = [KUndefinedKey stringByAppendingString:initMethod.importWords];
         
-        contentResult = [contentResult stringByReplacingOccurrencesOfString:KImport withString:initMethodString];
+        headerResult = [headerResult stringByReplacingOccurrencesOfString:KImport withString:initMethodString];
         
         NSString* initMethodString1 = [KUndefinedKey stringByAppendingString:initMethod.iniWords];
         
@@ -233,7 +217,21 @@ static VXXFileManager* instance;
     contentResult = [self changeNameWithData:contentResult andClassName:className andMode:@"method"];
     
     /**
-     *  下面将标志取消
+     *  h文件下面将标志取消
+     */
+    headerResult = [headerResult stringByReplacingOccurrencesOfString:begin_Interface withString:@""];
+    
+    headerResult = [headerResult stringByReplacingOccurrencesOfString:end_Interface withString:@""];
+    
+    headerResult = [headerResult stringByReplacingOccurrencesOfString:KUndefinedKey withString:@""];
+    
+    headerResult = [headerResult stringByReplacingOccurrencesOfString:KImport withString:@""];
+    
+    
+    
+    
+    /**
+     *  M文件下面将标志取消
      */
     contentResult = [contentResult stringByReplacingOccurrencesOfString:KUndefinedKey withString:@""];
     
@@ -248,7 +246,22 @@ static VXXFileManager* instance;
     contentResult = [contentResult stringByReplacingOccurrencesOfString:begin_Implementation withString:@""];
     
     contentResult = [contentResult stringByReplacingOccurrencesOfString:end_Implementation withString:@""];
-    //写入
+    
+    
+    //h写入
+    NSData* data = [headerResult dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSString* newName = [VXXChangClassName changeNameWithName:className andMode:@"class"];
+    
+    NSString* fileName = [NSString stringWithFormat:@"%@.h",newName];
+    
+    NSString* resultPath = [target stringByAppendingPathComponent:fileName];
+    
+    [self.fileManager createFileAtPath:resultPath contents:data attributes:nil];
+    
+    
+    
+    //m写入
     NSData* contentdata = [contentResult dataUsingEncoding:NSUTF8StringEncoding];
     
     NSString* newNameM = [VXXChangClassName changeNameWithName:className andMode:@"class"];
