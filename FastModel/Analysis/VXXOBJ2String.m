@@ -130,17 +130,18 @@ static VXXOBJ2String* instance;
         name = @"descriptionx";
     }
     
-    
     if ([name isEqualToString:@"id"]) {
         
         name = @"idx";
-        
     }
     
     if ([name isEqualToString:@"int"]) {
         name = @"intx";
     }
     
+    if ([name isEqualToString:@"count"]) {
+        name = @"countx";
+    }
     
     return name;
 }
