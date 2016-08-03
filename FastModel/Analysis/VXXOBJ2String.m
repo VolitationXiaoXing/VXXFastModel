@@ -184,6 +184,7 @@ static VXXOBJ2String* instance;
         
     }
     
+
     NSString* newName = [VXXChangClassName changeNameWithName:name andMode:@"class"];
     
        NSString* s = [NSString stringWithFormat:@"\r\n@property (strong,nonatomic) %@* %@;\r\n",newName,name];
@@ -209,6 +210,31 @@ static VXXOBJ2String* instance;
     }else{
         [self.modelArr setValue:@[name] forKey:className];
     }
+    
+    NSLog(@"214%@,%@",self.modelArr,self.currentClass);
+    
+    NSString* ClassN = nil;
+    
+//    self.modelArr.count >
+    
+    for (NSString* s in self.modelArr) {
+        
+        if ([s isEqualToString:name]) {
+            
+            ClassN = [VXXChangClassName changeNameWithName:name andMode:@"class"];
+            
+            NSLog(@"---------%@-----------",ClassN);
+            
+        }
+        
+    }
+    
+    if (ClassN != nil) {
+        
+        ClassN = [NSString stringWithFormat:@"<%@ *>",ClassN];
+        
+    }
+    
     
     NSString* s = [NSString stringWithFormat:@"\r\n@property (strong,nonatomic) NSArray* %@;\r\n",name];
     
