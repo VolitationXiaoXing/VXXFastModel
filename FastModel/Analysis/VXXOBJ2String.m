@@ -215,9 +215,9 @@ static VXXOBJ2String* instance;
     
     NSString* ClassN = nil;
     
-//    self.modelArr.count >
+    NSArray* arr = self.modelArr[self.currentClass];
     
-    for (NSString* s in self.modelArr) {
+    for (NSString* s in arr) {
         
         if ([s isEqualToString:name]) {
             
@@ -231,12 +231,12 @@ static VXXOBJ2String* instance;
     
     if (ClassN != nil) {
         
-        ClassN = [NSString stringWithFormat:@"<%@ *>",ClassN];
+        ClassN = [NSString stringWithFormat:@"#class#<%@ *>#class#",ClassN];
         
     }
     
     
-    NSString* s = [NSString stringWithFormat:@"\r\n@property (strong,nonatomic) NSArray* %@;\r\n",name];
+    NSString* s = [NSString stringWithFormat:@"\r\n@property (strong,nonatomic) NSArray%@* %@;\r\n",ClassN,name];
     
     return s;
 }
