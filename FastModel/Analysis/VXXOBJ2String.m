@@ -211,19 +211,20 @@ static VXXOBJ2String* instance;
         [self.modelArr setValue:@[name] forKey:className];
     }
     
-    NSLog(@"214%@,%@",self.modelArr,self.currentClass);
+    NSLog(@"214%@,%@,%@,%@",self.modelArr,self.currentClass,self.errorArr,name);
     
     NSString* ClassN = nil;
     
     NSArray* arr = self.modelArr[self.currentClass];
     
+
+    
     for (NSString* s in arr) {
         
         if ([s isEqualToString:name]) {
             
-            ClassN = [VXXChangClassName changeNameWithName:name andMode:@"class"];
-            
-            NSLog(@"---------%@-----------",ClassN);
+            ClassN = name;
+      
             
         }
         
@@ -231,10 +232,31 @@ static VXXOBJ2String* instance;
     
     if (ClassN != nil) {
         
-        ClassN = [NSString stringWithFormat:@"#class#<%@ *>#class#",ClassN];
+        BOOL has = NO;
         
-    }
+        for (NSString* s in self.errorArr[self.currentClass]) {
+            
+            if ([s isEqualToString:name]) {
+                
+                NSLog(@"这个相似");
+                
+                has = YES;
+                
+            }
+
+        }
+        
+        if (!has) {
+            
+            ClassN = [VXXChangClassName changeNameWithName:name andMode:@"class"];
+
+            ClassN = [NSString stringWithFormat:@"<%@ *>",ClassN];
+        }else{
+            ClassN = @"";
+        }
     
+    }
+          NSLog(@"---------%@-----------",ClassN);
     
     NSString* s = [NSString stringWithFormat:@"\r\n@property (strong,nonatomic) NSArray%@* %@;\r\n",ClassN,name];
     
@@ -266,8 +288,6 @@ static VXXOBJ2String* instance;
 
 
 -(VXXInitMethod*)addInitMethod{
-    
-    NSLog(@"237 %@",self.errorArr);
     
     
     VXXInitMethod* initMethod = [VXXInitMethod new];
