@@ -81,6 +81,11 @@
     
     self.className = self.classNameTextField.stringValue;
     
+    if(self.className == nil || self.className.length == 0){
+ 
+        return;
+    }
+    
     //将大写的类名改成小写的类名
     NSString* headString  = [self.className substringWithRange:NSMakeRange(0, 1)];
     

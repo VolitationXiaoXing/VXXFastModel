@@ -677,7 +677,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="URL" identifier="1" id="3PK-Y6-uI5">
-                                        <view key="view" id="Rqw-Hd-hHd" customClass="VXXURLView">
+                                        <view key="view" ambiguous="YES" id="Rqw-Hd-hHd" customClass="VXXURLView">
                                             <rect key="frame" x="10" y="33" width="472" height="240"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -698,24 +698,15 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QB6-nD-Tck">
-                                                    <rect key="frame" x="71" y="25" width="96" height="29"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="text" drawsBackground="YES" id="3Dm-vq-DXg">
+                                                    <rect key="frame" x="58" y="25" width="134" height="29"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="className" drawsBackground="YES" id="3Dm-vq-DXg">
                                                         <font key="font" metaFont="system" size="14"/>
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3M-RS-hje">
-                                                    <rect key="frame" x="71" y="64" width="384" height="155"/>
-                                                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ue8-mL-DR8">
-                                                        <font key="font" metaFont="system"/>
-                                                        <string key="title">http://api.dianping.com/v1/deal/find_deals?appkey=11474086&amp;city=%E5%8C%97%E4%BA%AC&amp;limit=20&amp;page=1&amp;sign=628BA875C8BF639434D81AD69ED5A78A10D205EC</string>
-                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8td-lC-jm6">
-                                                    <rect key="frame" x="333" y="22" width="101" height="32"/>
+                                                    <rect key="frame" x="318" y="22" width="116" height="32"/>
                                                     <buttonCell key="cell" type="push" title="生成" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8vd-Si-t5r">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
@@ -724,6 +715,14 @@
                                                         <action selector="onAnalysisBtnCliceked:" target="XfG-lQ-9wD" id="eBX-cS-n1t"/>
                                                     </connections>
                                                 </button>
+                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3M-RS-hje">
+                                                    <rect key="frame" x="71" y="64" width="384" height="155"/>
+                                                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="Paste the url here" drawsBackground="YES" id="ue8-mL-DR8">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
@@ -733,8 +732,8 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QkD-eP-pPc">
-                                                    <rect key="frame" x="49" y="220" width="220" height="17"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="将PList文件拖入文本框,然后点击生成" id="XdW-6I-SRg">
+                                                    <rect key="frame" x="15" y="220" width="298" height="17"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="将PList文件拖入文本框输入模型名称,然后点击生成" id="XdW-6I-SRg">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -750,14 +749,6 @@
                                                         <action selector="onPListBtnclicked:" target="XfG-lQ-9wD" id="Yxd-90-M2X"/>
                                                     </connections>
                                                 </button>
-                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vgh-PJ-b9v">
-                                                    <rect key="frame" x="17" y="49" width="438" height="164"/>
-                                                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="y9j-pR-mm1">
-                                                        <font key="font" metaFont="system"/>
-                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HlG-mO-x2y">
                                                     <rect key="frame" x="24" y="17" width="69" height="17"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="模型名称：" id="69w-SU-SpT">
@@ -769,6 +760,14 @@
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qoJ-e1-Xo8">
                                                     <rect key="frame" x="91" y="14" width="110" height="22"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="fAr-aW-lyE">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vgh-PJ-b9v">
+                                                    <rect key="frame" x="17" y="48" width="438" height="164"/>
+                                                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="y9j-pR-mm1">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -848,7 +847,7 @@
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="关于" identifier="" id="FXJ-Zr-XvQ">
-                                        <view key="view" ambiguous="YES" id="DTy-f4-rNN">
+                                        <view key="view" id="DTy-f4-rNN">
                                             <rect key="frame" x="10" y="33" width="472" height="240"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
