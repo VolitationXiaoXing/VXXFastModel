@@ -143,6 +143,11 @@ static VXXOBJ2String* instance;
         name = @"countx";
     }
     
+    if ([name isEqualToString:@"template"]) {
+        name = @"templatex";
+    }
+    
+    
     return name;
 }
 

@@ -31,6 +31,7 @@
 @property (weak) IBOutlet NSTextField *JSONTextField;
 
 @property (weak) IBOutlet NSTextField *JSONClassTextField;
+@property (weak) IBOutlet NSTextField *JSONResultlbl;
 
 @property (assign,nonatomic) BOOL isClicked;
 
@@ -223,6 +224,16 @@
     
     self.className = self.pListTextClassField.stringValue;
     
+    if (self.className.length == 0 || self.className == nil) {
+        
+        result = [NSString stringWithFormat:@"\n模型名称不能为空!!!"];
+        
+        self.pListTextField.stringValue = result;
+        
+        return;
+        
+    }
+    
     self.className = [self changeClassName:self.className];
     
     [a analysisWithID:arr andClassName:self.className];
@@ -233,31 +244,15 @@
     
 }
 
-- (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor{
-    
-    NSString* s = self.pListTextField.stringValue;
-    
-    NSLog(@"%@",s);
-    
-    return YES;
-}
-
-- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor{
-    
-    NSString* s = self.pListTextField.stringValue;
-    
-    NSLog(@"%@",s);
-    
-    return YES;
-    
-}
-
-
 #pragma mark- JSON文件模块
 
 - (IBAction)radioFileBtnClicked:(NSButton *)sender {
     
     self.JsonRaioContent.state = 0;
+    
+    self.JSONResultlbl.hidden = YES;
+    
+    self.JSONTextField.stringValue = @"";
 
 }
 
@@ -265,17 +260,106 @@
     
     self.JsonRaioFile.state = 0;
     
+    self.JSONResultlbl.hidden = YES;
+    
+     self.JSONTextField.stringValue = @"";
 }
 
 - (IBAction)JSONBtnClicked:(NSButton *)sender {
     
     if (self.JsonRaioFile.state == 1) {
         NSLog(@"文件模式");
+        self.JSONResultlbl.hidden = YES;
+        
+        NSString* str = self.JSONTextField.stringValue;
+        
+        NSFileManager* fileM = [NSFileManager defaultManager];
+        
+        BOOL isExist = [fileM fileExistsAtPath:str];
+        
+        if (!isExist) {
+            
+            NSLog(@"文件不存在");
+            
+            NSString* result = [NSString stringWithFormat:@"%@\n%@",str,@"文件不存在!!!"];
+            
+            self.JSONTextField.stringValue = result;
+            
+            return;
+        }
+        
+        NSData* data = [NSData dataWithContentsOfFile:str];
+        
+        if (data == nil) {
+            
+            NSLog(@"未知错误");
+            
+        }
+        
+        NSString* result = [NSString stringWithFormat:@"%@\n%@",str,@"文件存在。\n文件类型正确，正在解析..."];
+        
+        self.JSONTextField.stringValue = result;
+        
+        VXXAnalysis* a = [VXXAnalysis shareAnalysis];
+        
+        self.className = self.JSONClassTextField.stringValue;
+        
+        if (self.className.length == 0 || self.className == nil) {
+            
+            result = [NSString stringWithFormat:@"%@\n模型名称不能为空!!!",result];
+            
+            self.JSONTextField.stringValue = result;
+            
+            return;
+            
+        }
+        
+        self.className = [self changeClassName:self.className];
+        
+        [a analysisWithData:data andClassName:self.className];
+        
+        result = [NSString stringWithFormat:@"%@\n文件解析完成!!!",result];
+        
+        self.JSONTextField.stringValue = result;
+   
         
     }else{
         
         NSLog(@"内容模式");
-    
+        
+        self.JSONResultlbl.hidden = NO;
+        
+        NSString* s = self.JSONTextField.stringValue;
+        
+        NSData* data = [s dataUsingEncoding:NSUTF8StringEncoding];
+        
+        id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        
+        if (json == nil) {
+            
+           self.JSONResultlbl.stringValue = @"JSON格式化失败，内容不是JSON类型";
+            
+        }
+        
+        self.className = self.JSONClassTextField.stringValue;
+        
+        if (self.className.length == 0 || self.className == nil) {
+            
+            self.JSONResultlbl.stringValue = @"模型名称不能为空";
+            
+            return;
+            
+        }
+        
+        VXXAnalysis* a = [VXXAnalysis shareAnalysis];
+        
+        self.className = [self changeClassName:self.className];
+        
+        [a analysisWithData:data andClassName:self.className];
+        
+       
+       self.JSONResultlbl.stringValue = @"文件解析成功";
+        
     }
 }
 

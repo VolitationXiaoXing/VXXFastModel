@@ -678,11 +678,11 @@
                                 <tabViewItems>
                                     <tabViewItem label="URL" identifier="1" id="3PK-Y6-uI5">
                                         <view key="view" id="Rqw-Hd-hHd" customClass="VXXURLView">
-                                            <rect key="frame" x="10" y="33" width="219" height="0.0"/>
+                                            <rect key="frame" x="10" y="33" width="472" height="240"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pbA-Yo-Tl5">
-                                                    <rect key="frame" x="15" y="-78" width="37" height="17"/>
+                                                    <rect key="frame" x="15" y="133" width="37" height="17"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="URL:" id="fSf-Nz-XU9">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -690,15 +690,32 @@
                                                     </textFieldCell>
                                                 </textField>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QB1-hD-Rvt">
-                                                    <rect key="frame" x="15" y="-163" width="37" height="17"/>
+                                                    <rect key="frame" x="15" y="31" width="37" height="17"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="类名:" id="XqB-rU-c3Q">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
+                                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QB6-nD-Tck">
+                                                    <rect key="frame" x="71" y="25" width="96" height="29"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="text" drawsBackground="YES" id="3Dm-vq-DXg">
+                                                        <font key="font" metaFont="system" size="14"/>
+                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3M-RS-hje">
+                                                    <rect key="frame" x="71" y="64" width="384" height="155"/>
+                                                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ue8-mL-DR8">
+                                                        <font key="font" metaFont="system"/>
+                                                        <string key="title">http://api.dianping.com/v1/deal/find_deals?appkey=11474086&amp;city=%E5%8C%97%E4%BA%AC&amp;limit=20&amp;page=1&amp;sign=628BA875C8BF639434D81AD69ED5A78A10D205EC</string>
+                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8td-lC-jm6">
-                                                    <rect key="frame" x="330" y="-170" width="101" height="32"/>
+                                                    <rect key="frame" x="333" y="22" width="101" height="32"/>
                                                     <buttonCell key="cell" type="push" title="生成" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="8vd-Si-t5r">
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="system"/>
@@ -707,23 +724,6 @@
                                                         <action selector="onAnalysisBtnCliceked:" target="XfG-lQ-9wD" id="eBX-cS-n1t"/>
                                                     </connections>
                                                 </button>
-                                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QB6-nD-Tck">
-                                                    <rect key="frame" x="71" y="-169" width="96" height="29"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="text" drawsBackground="YES" id="3Dm-vq-DXg">
-                                                        <font key="font" metaFont="system" size="14"/>
-                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
-                                                <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3M-RS-hje">
-                                                    <rect key="frame" x="71" y="-119" width="384" height="98"/>
-                                                    <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="ue8-mL-DR8">
-                                                        <font key="font" metaFont="system"/>
-                                                        <string key="title">http://api.dianping.com/v1/deal/find_deals?appkey=11474086&amp;city=%E5%8C%97%E4%BA%AC&amp;limit=20&amp;page=1&amp;sign=628BA875C8BF639434D81AD69ED5A78A10D205EC</string>
-                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
@@ -778,7 +778,7 @@
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="JSON" identifier="" id="7tI-Ok-urb">
-                                        <view key="view" ambiguous="YES" id="G9I-BE-R8S">
+                                        <view key="view" id="G9I-BE-R8S">
                                             <rect key="frame" x="10" y="33" width="472" height="240"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -820,14 +820,6 @@
                                                         <action selector="radioFileBtnClicked:" target="XfG-lQ-9wD" id="pB7-a9-r0I"/>
                                                     </connections>
                                                 </button>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A3y-o1-zCh">
-                                                    <rect key="frame" x="30" y="9" width="59" height="14"/>
-                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="模型名称：" id="Z98-mG-MWg">
-                                                        <font key="font" metaFont="smallSystem"/>
-                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                                    </textFieldCell>
-                                                </textField>
                                                 <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cB3-DS-pBJ">
                                                     <rect key="frame" x="95" y="7" width="130" height="19"/>
                                                     <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="lr9-ru-qEf">
@@ -836,22 +828,30 @@
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
-                                            </subviews>
-                                        </view>
-                                    </tabViewItem>
-                                    <tabViewItem label="关于" identifier="" id="FXJ-Zr-XvQ">
-                                        <view key="view" id="DTy-f4-rNN">
-                                            <rect key="frame" x="10" y="33" width="472" height="240"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e7x-eO-Zps">
-                                                    <rect key="frame" x="36" y="192" width="297" height="17"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="作者:  VolitationXiaoXing" id="d4I-YY-IO8">
-                                                        <font key="font" metaFont="system"/>
+                                                <textField hidden="YES" horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lGm-x9-Brk">
+                                                    <rect key="frame" x="267" y="10" width="190" height="14"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="SCW-Cw-yQZ">
+                                                        <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A3y-o1-zCh">
+                                                    <rect key="frame" x="30" y="9" width="59" height="14"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="模型名称：" id="Z98-mG-MWg">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                            </subviews>
+                                        </view>
+                                    </tabViewItem>
+                                    <tabViewItem label="关于" identifier="" id="FXJ-Zr-XvQ">
+                                        <view key="view" ambiguous="YES" id="DTy-f4-rNN">
+                                            <rect key="frame" x="10" y="33" width="472" height="240"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qpl-jf-VqR">
                                                     <rect key="frame" x="36" y="147" width="394" height="17"/>
                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="github: https://github.com/VolitationXiaoXing" id="ILR-CS-TNO">
@@ -884,6 +884,14 @@
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                     </textFieldCell>
                                                 </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="e7x-eO-Zps">
+                                                    <rect key="frame" x="36" y="192" width="297" height="17"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="作者:  VolitationXiaoXing" id="d4I-YY-IO8">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
                                             </subviews>
                                         </view>
                                     </tabViewItem>
@@ -893,6 +901,7 @@
                     </view>
                     <connections>
                         <outlet property="JSONClassTextField" destination="cB3-DS-pBJ" id="6A6-Wx-jzL"/>
+                        <outlet property="JSONResultlbl" destination="lGm-x9-Brk" id="nEs-IE-VO4"/>
                         <outlet property="JSONTextField" destination="oqe-nj-Fwu" id="9Ct-WM-O41"/>
                         <outlet property="JsonRaioContent" destination="lf6-qZ-RHj" id="oyQ-1D-bNB"/>
                         <outlet property="JsonRaioFile" destination="0cy-Oy-Qty" id="uL1-6g-f1w"/>
