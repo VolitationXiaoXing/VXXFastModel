@@ -13,10 +13,24 @@
 
 
 
-@interface ViewController ()
+@interface ViewController ()<NSTextFieldDelegate>
 
 @property (weak) IBOutlet NSTextField *urlTextField;
+
 @property (weak) IBOutlet NSTextField *classNameTextField;
+
+@property (weak) IBOutlet NSTextField *pListTextField;
+
+@property (weak) IBOutlet NSTextField *pListTextClassField;
+
+
+@property (weak) IBOutlet NSButton *JsonRaioFile;
+
+@property (weak) IBOutlet NSButton *JsonRaioContent;
+
+@property (weak) IBOutlet NSTextField *JSONTextField;
+
+@property (weak) IBOutlet NSTextField *JSONClassTextField;
 
 @property (assign,nonatomic) BOOL isClicked;
 
@@ -35,6 +49,8 @@
     [super viewDidLoad];
     
     self.isClicked = NO;
+    
+    self.pListTextField.delegate = self;
 }
 
 - (void)setRepresentedObject:(id)representedObject {
@@ -157,12 +173,126 @@
 
 }
 
-- (IBAction)onGetCodeClicked:(id)sender {
+#pragma mark- 下面是plist模块
+
+- (IBAction)onPListBtnclicked:(NSButton *)sender {
     
-    NSLog(@"点击获取源码");
+    NSLog(@"onPListBtnclicked");
     
+    NSString* str = self.pListTextField.stringValue;
+    
+    NSFileManager* fileM = [NSFileManager defaultManager];
+    
+    BOOL isExist = [fileM fileExistsAtPath:str];
+    
+    if (!isExist) {
+        
+        NSLog(@"文件不存在");
+        
+        NSString* result = [NSString stringWithFormat:@"%@\n%@",str,@"文件不存在!!!"];
+        
+        self.pListTextField.stringValue = result;
+        
+        return;
+    }
+    
+    id arr = [NSArray arrayWithContentsOfFile:str];
+    
+    if (arr == nil) {
+        
+        arr = [NSDictionary dictionaryWithContentsOfFile:str];
+        
+    }
+    
+    if (arr == nil) {
+        
+        NSLog(@"文件类型错误，或文件内容错误！！");
+        
+        NSString* result = [NSString stringWithFormat:@"%@\n%@",str,@"文件类型错误，或文件内容错误!!!"];
+        
+        self.pListTextField.stringValue = result;
+        
+        return;
+    }
+    
+    NSString* result = [NSString stringWithFormat:@"%@\n%@",str,@"文件存在。\n文件类型正确，正在解析..."];
+    
+    self.pListTextField.stringValue = result;
+    
+    VXXAnalysis* a = [VXXAnalysis shareAnalysis];
+    
+    self.className = self.pListTextClassField.stringValue;
+    
+    self.className = [self changeClassName:self.className];
+    
+    [a analysisWithID:arr andClassName:self.className];
+    
+    result = [NSString stringWithFormat:@"%@\n文件解析完成!!!",result];
+    
+    self.pListTextField.stringValue = result;
     
 }
 
+- (BOOL)control:(NSControl *)control textShouldBeginEditing:(NSText *)fieldEditor{
+    
+    NSString* s = self.pListTextField.stringValue;
+    
+    NSLog(@"%@",s);
+    
+    return YES;
+}
+
+- (BOOL)control:(NSControl *)control textShouldEndEditing:(NSText *)fieldEditor{
+    
+    NSString* s = self.pListTextField.stringValue;
+    
+    NSLog(@"%@",s);
+    
+    return YES;
+    
+}
+
+
+#pragma mark- JSON文件模块
+
+- (IBAction)radioFileBtnClicked:(NSButton *)sender {
+    
+    self.JsonRaioContent.state = 0;
+
+}
+
+- (IBAction)radioContentBtnClicked:(NSButton *)sender {
+    
+    self.JsonRaioFile.state = 0;
+    
+}
+
+- (IBAction)JSONBtnClicked:(NSButton *)sender {
+    
+    if (self.JsonRaioFile.state == 1) {
+        NSLog(@"文件模式");
+        
+    }else{
+        
+        NSLog(@"内容模式");
+    
+    }
+}
+
+
+
+-(NSString*)changeClassName:(NSString*)name{
+    
+    //将大写的类名改成小写的类名
+    NSString* headString  = [name substringWithRange:NSMakeRange(0, 1)];
+    
+    headString = [headString lowercaseString];
+    
+    NSString* endString  = [name substringWithRange:NSMakeRange(1, self.className.length - 1)];
+    
+    name = [headString stringByAppendingString:endString];
+    
+    return name;
+}
 
 @end

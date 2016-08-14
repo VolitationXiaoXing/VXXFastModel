@@ -12,6 +12,8 @@
 
 -(void)analysisWithData:(NSData*)data andClassName:(NSString*)className;
 
+-(void)analysisWithID:(id)data andClassName:(NSString*)className;
+
 +(instancetype)shareAnalysis;
 
 -(void)reset;

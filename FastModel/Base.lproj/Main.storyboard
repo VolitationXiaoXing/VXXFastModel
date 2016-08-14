@@ -677,7 +677,7 @@
                                 <font key="font" metaFont="system"/>
                                 <tabViewItems>
                                     <tabViewItem label="URL" identifier="1" id="3PK-Y6-uI5">
-                                        <view key="view" ambiguous="YES" id="Rqw-Hd-hHd" customClass="VXXURLView">
+                                        <view key="view" id="Rqw-Hd-hHd" customClass="VXXURLView">
                                             <rect key="frame" x="10" y="33" width="219" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
@@ -733,8 +733,8 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QkD-eP-pPc">
-                                                    <rect key="frame" x="49" y="220" width="138" height="17"/>
-                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="将PList文件拖入文本框" id="XdW-6I-SRg">
+                                                    <rect key="frame" x="49" y="220" width="220" height="17"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="将PList文件拖入文本框,然后点击生成" id="XdW-6I-SRg">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -746,10 +746,29 @@
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="cellTitle"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="onPListBtnclicked:" target="XfG-lQ-9wD" id="Yxd-90-M2X"/>
+                                                    </connections>
                                                 </button>
                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vgh-PJ-b9v">
-                                                    <rect key="frame" x="17" y="17" width="438" height="196"/>
+                                                    <rect key="frame" x="17" y="49" width="438" height="164"/>
                                                     <textFieldCell key="cell" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="y9j-pR-mm1">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HlG-mO-x2y">
+                                                    <rect key="frame" x="24" y="17" width="69" height="17"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="模型名称：" id="69w-SU-SpT">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qoJ-e1-Xo8">
+                                                    <rect key="frame" x="91" y="14" width="110" height="22"/>
+                                                    <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="fAr-aW-lyE">
                                                         <font key="font" metaFont="system"/>
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -759,23 +778,19 @@
                                         </view>
                                     </tabViewItem>
                                     <tabViewItem label="JSON" identifier="" id="7tI-Ok-urb">
-                                        <view key="view" id="G9I-BE-R8S">
+                                        <view key="view" ambiguous="YES" id="G9I-BE-R8S">
                                             <rect key="frame" x="10" y="33" width="472" height="240"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0cy-Oy-Qty">
-                                                    <rect key="frame" x="47" y="214" width="57" height="20"/>
-                                                    <buttonCell key="cell" type="radio" title="文件" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="JWn-PP-MpL">
-                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                                                        <font key="font" metaFont="smallSystem"/>
-                                                    </buttonCell>
-                                                </button>
                                                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lf6-qZ-RHj">
                                                     <rect key="frame" x="146" y="214" width="57" height="20"/>
                                                     <buttonCell key="cell" type="radio" title="内容" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" inset="2" id="cki-rg-Y6u">
                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                         <font key="font" metaFont="smallSystem"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="radioContentBtnClicked:" target="XfG-lQ-9wD" id="0Za-WA-Dvd"/>
+                                                    </connections>
                                                 </button>
                                                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hZ8-Yz-hbb">
                                                     <rect key="frame" x="369" y="206" width="79" height="28"/>
@@ -783,10 +798,39 @@
                                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                         <font key="font" metaFont="smallSystem"/>
                                                     </buttonCell>
+                                                    <connections>
+                                                        <action selector="JSONBtnClicked:" target="XfG-lQ-9wD" id="G6b-Fm-3fJ"/>
+                                                    </connections>
                                                 </button>
                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oqe-nj-Fwu">
-                                                    <rect key="frame" x="17" y="13" width="445" height="191"/>
+                                                    <rect key="frame" x="17" y="38" width="445" height="166"/>
                                                     <textFieldCell key="cell" controlSize="small" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="NsC-Tt-eUF">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0cy-Oy-Qty">
+                                                    <rect key="frame" x="47" y="214" width="57" height="20"/>
+                                                    <buttonCell key="cell" type="radio" title="文件" bezelStyle="regularSquare" imagePosition="left" alignment="left" controlSize="small" state="on" inset="2" id="JWn-PP-MpL">
+                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                    </buttonCell>
+                                                    <connections>
+                                                        <action selector="radioFileBtnClicked:" target="XfG-lQ-9wD" id="pB7-a9-r0I"/>
+                                                    </connections>
+                                                </button>
+                                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="A3y-o1-zCh">
+                                                    <rect key="frame" x="30" y="9" width="59" height="14"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="模型名称：" id="Z98-mG-MWg">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                </textField>
+                                                <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cB3-DS-pBJ">
+                                                    <rect key="frame" x="95" y="7" width="130" height="19"/>
+                                                    <textFieldCell key="cell" controlSize="small" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="lr9-ru-qEf">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -848,13 +892,19 @@
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="JSONClassTextField" destination="cB3-DS-pBJ" id="6A6-Wx-jzL"/>
+                        <outlet property="JSONTextField" destination="oqe-nj-Fwu" id="9Ct-WM-O41"/>
+                        <outlet property="JsonRaioContent" destination="lf6-qZ-RHj" id="oyQ-1D-bNB"/>
+                        <outlet property="JsonRaioFile" destination="0cy-Oy-Qty" id="uL1-6g-f1w"/>
                         <outlet property="classNameTextField" destination="QB6-nD-Tck" id="fju-rU-299"/>
+                        <outlet property="pListTextClassField" destination="qoJ-e1-Xo8" id="URK-1X-bua"/>
+                        <outlet property="pListTextField" destination="Vgh-PJ-b9v" id="Eug-6Q-aLd"/>
                         <outlet property="urlTextField" destination="c3M-RS-hje" id="Vez-rG-e5y"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-101" y="629"/>
+            <point key="canvasLocation" x="-199" y="626"/>
         </scene>
     </scenes>
 </document>

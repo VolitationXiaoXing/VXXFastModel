@@ -37,25 +37,9 @@ static VXXAnalysis* instance;
     return instance;
 }
 
-//这个方法主要负责将data解析成字典或者数组
--(void)analysisWithData:(NSData*)data andClassName:(NSString*)className{
+-(void)analysisWithID:(id)data andClassName:(NSString*)className{
     
-    if(className.length == 0){
-        return;
-    }
-    
-//    [self.classArr addObject:className];
-    
-    //现在只是支持json
-    
-    NSError* error;
-    
-    id dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-    
-    if (error) {
-        NSLog(@"json 解析错误了");
-        return;
-    }
+    id dict = data;
     
     if ( [dict isKindOfClass:[NSDictionary class]]) {
         
@@ -69,9 +53,9 @@ static VXXAnalysis* instance;
         
         if([fileManager seachFileWithDirName:className]){
             
-        NSLog(@"arrData = %@",arrData);
-
-        [fileManager beginWrite2FileWithClassName:className anddata:arrData];
+            NSLog(@"arrData = %@",arrData);
+            
+            [fileManager beginWrite2FileWithClassName:className anddata:arrData];
             
             
             
@@ -82,7 +66,7 @@ static VXXAnalysis* instance;
         
         NSLog(@"这个是数组");
         
-         //需要定义一个构造方法
+        //需要定义一个构造方法
         //这里添加构造器方法
         [[[VXXOBJ2String shareOBJ2StringWithCurrentClass:className] classTypeDict] setObject:@"NSArray" forKey:className];
         
@@ -93,13 +77,37 @@ static VXXAnalysis* instance;
         
         if([fileManager seachFileWithDirName:className]){
             
-        NSLog(@"arrData = %@",arrData);
-        
-        [fileManager beginWrite2FileWithClassName:className anddata:arrData];
+            NSLog(@"arrData = %@",arrData);
+            
+            [fileManager beginWrite2FileWithClassName:className anddata:arrData];
             
         }
         
     }
+
+    
+}
+
+
+//这个方法主要负责将data解析成字典或者数组
+-(void)analysisWithData:(NSData*)data andClassName:(NSString*)className{
+    
+    if(className.length == 0){
+        return;
+    }
+    
+    //现在只是支持json
+    
+    NSError* error;
+    
+    id dict = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+    
+    if (error) {
+        NSLog(@"json 解析错误了");
+        return;
+    }
+    
+    [self analysisWithID:dict andClassName:className];
 }
 
 
