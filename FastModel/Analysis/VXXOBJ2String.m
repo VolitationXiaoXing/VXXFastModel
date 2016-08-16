@@ -311,10 +311,18 @@ static VXXOBJ2String* instance;
             if ([name isEqualToString:key]) {
                 //找到对应的类名
                 NSMutableArray* mDict = obj;
+                
+                if ([[mDict class] isSubclassOfClass:[NSArray class]]) {
+                    
+                    return ;
+                }
+                
                 //得到错误数组然后删除数据
                 NSArray* arr = [self.errorArr valueForKey:name];
                 
                 for (NSString* key in arr) {
+                    
+                    NSLog(@"key = %@",key);
                     
                     [mDict removeObject:key];
                     
