@@ -24,15 +24,13 @@
       "scale" : "2x"
     },
     {
-      "size" : "128x128",
       "idiom" : "mac",
-      "filename" : "app_icon@2x-2.png",
+      "size" : "128x128",
       "scale" : "1x"
     },
     {
-      "size" : "128x128",
       "idiom" : "mac",
-      "filename" : "0-模型-2.png",
+      "size" : "128x128",
       "scale" : "2x"
     },
     {

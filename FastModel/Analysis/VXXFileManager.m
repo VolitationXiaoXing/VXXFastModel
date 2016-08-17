@@ -47,8 +47,6 @@
 
 @implementation VXXFileManager
 
-//static NSString* rootPath = @"res";
-
 static NSString* headerFile = @"Model.hres";
 
 static NSString* contentFile = @"Model.mres";
@@ -291,6 +289,8 @@ static VXXFileManager* instance;
     
     NSMutableString* mString = [NSMutableString string];
     
+    NSLog(@"%@",model.dict);
+    
     [model.dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
 
         if ([[obj class] isSubclassOfClass:[VXXDictionary class]]) {
@@ -298,14 +298,39 @@ static VXXFileManager* instance;
             
             VXXDictionary* dict = (VXXDictionary*)obj;
             
+            if (dict == nil) {
+                
+                NSLog(@"系统错误");
+                
+            }
+            
             //这里有两种情况,一种是数组 一种是字典
             
             if(dict.OBJtype == VXXDictionaryTypeDict){
               //这个是字典
+                
+                NSLog(@"dict.dict.count = %ld",dict.dict.count);
+                
                 if (dict.dict.count > 1) {
                     //需要生成摸型
                     [self beginWrite2FileWithClassName:key anddata:obj];
                  }
+                
+                //如果字典里面有一个元素判断这一个是不是数组或者字典
+                if(dict.dict.count == 1){
+                    
+                    [dict.dict enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                        
+                        //判断元素是否是VXXDictionary
+                        if ([[obj class] isSubclassOfClass:[VXXDictionary class]]) {
+                            
+                            [self beginWrite2FileWithClassName:key anddata:obj];
+                            
+                        }
+    
+                    }];
+                
+                }
                 
                 NSString* str = [[VXXOBJ2String shareOBJ2StringWithCurrentClass:className] dict2StringWithName:key andClassName:key];
                 
@@ -341,7 +366,9 @@ static VXXFileManager* instance;
             }
         }
     }];
-
+    
+    NSLog(@"%@",mString);
+    
     return mString;
     
 }

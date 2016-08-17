@@ -57,8 +57,6 @@ static VXXAnalysis* instance;
             
             [fileManager beginWrite2FileWithClassName:className anddata:arrData];
             
-            
-            
         }
         
         

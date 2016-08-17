@@ -33,7 +33,7 @@
 -(void)cleanErrorArrayWithClassName:(NSString*)name;
 
 
-//清楚所有的数据
+//清除所有的数据
 -(void)reset;
 
 @end
